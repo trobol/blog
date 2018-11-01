@@ -28,7 +28,8 @@ httpApp.use('/.well-known/acme-challenge/', express.static('.well-known'));
 httpApp.use(function(req, res) {
 	res.writeHead(301, { "Location": "https://" + req.headers.host + req.url });
     res.end();
-})
+});
+
 httpApp.listen(portHttp);
 
 spdy
