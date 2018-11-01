@@ -5,8 +5,8 @@ fs = require('fs'),
 spdy = require('spdy'),
 posts = require('./posts.js'),
 path = require('path'),
-portHttp = 8003,
-portHttps = 8006;
+portHttp = 80,
+portHttps = 443;
 
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
