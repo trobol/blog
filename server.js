@@ -21,12 +21,17 @@ app.use(function(req, res, next) {
 app.use(posts);
 app.use(express.static('public'));
 
+let httpApp = express();
 
- http.createServer((req, res) => {
+httpApp.use('/.well-known/acme-challenge/', express.static('.well-known'));
+
+httpApp.use(function(req, res) {
 	res.writeHead(301, { "Location": "https://" + req.headers.host + req.url });
     res.end();
- }).listen(portHttp);
- spdy
+})
+httpApp.listen(portHttp);
+
+spdy
   .createServer({
 	key: fs.readFileSync('server.key'),
 	cert: fs.readFileSync('server.crt'),
