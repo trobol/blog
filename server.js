@@ -8,6 +8,7 @@ path = require('path'),
 portHttp = 80,
 portHttps = 443;
 
+
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
 		res.sendFile('public/index.html' , { root : __dirname});
