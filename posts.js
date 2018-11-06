@@ -1,7 +1,7 @@
 const fs = require('fs'),
 express = require('express'),
 router = express.Router(),
-path = 'public/posts/';
+path = './public/posts/';
 
 router.get('/posts.json', function(req, res) {
 	res.setHeader('Content-Type', 'application/json');

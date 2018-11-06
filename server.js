@@ -4,14 +4,12 @@ http = require('http'),
 fs = require('fs'),
 spdy = require('spdy'),
 posts = require('./posts.js'),
-path = require('path'),
-portHttp = 80,
-portHttps = 443;
+path = require('path');
 
 
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
-		res.sendFile('public/index.html' , { root : __dirname});
+		res.sendFile('./public/index.html' , { root : __dirname});
 		console.log("BOOP");
 	} else {
 		console.log(req.path);
