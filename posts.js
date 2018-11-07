@@ -10,6 +10,8 @@ router.get('/posts.json', function(req, res) {
 });
 
 let posts = [];
+
+
 getAllPosts().then(console.log("Retrieved Posts"));
 fs.watch(path, (eventType, filename) => {
 	if(eventType == 'rename') {
@@ -23,6 +25,7 @@ fs.watch(path, (eventType, filename) => {
 });
 
 function getAllPosts() {
+	console.log("Getting posts");
 	return new Promise((resolve, reject) => {
 		let items = fs.readdirSync(path),
 		date = new Date();
