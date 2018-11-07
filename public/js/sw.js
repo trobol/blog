@@ -3,7 +3,7 @@ var cacheName = 'v1';
 
 // The set of files to cache
 var filesToCache = [
-  './',
+  '/',
   '/index.html',
   '/style.css',
   '/main.js'
