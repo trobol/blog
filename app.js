@@ -1,8 +1,5 @@
 const express = require('express'),
 app = express(),
-http = require('http'),
-fs = require('fs'),
-spdy = require('spdy'),
 posts = require('./posts.js'),
 path = require('path');
 
@@ -17,6 +14,6 @@ app.use(function(req, res, next) {
 	}
 });	
 app.use(posts);
-app.use(express.static('./blog/public'));
+app.use(express.static(`${__dirname}/public`));
 
 module.exports = app;
