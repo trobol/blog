@@ -3,7 +3,7 @@
 	"short_name": "TF Blog",
 	"description": "",
 	"lang": "en-US",
-	"start_url": "/",
+	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#FFFFFF",
 	"background_color" : "#FFFFFF",
