@@ -73,7 +73,6 @@ function getAllPosts() {
 				fs.writeFileSync(`${path}${post.url}/post.json`,JSON.stringify(post, null, 2));
 			}
 		}
-		
 		resolve(posts);
 	});
 }
