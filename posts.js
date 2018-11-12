@@ -66,10 +66,12 @@ function getAllPosts() {
 		});
 		
 		for(let n in posts) {
-			let post = posts[n];
-			
-			post.id = posts.length - n;
-			fs.writeFileSync(`${path}${post.url}/post.json`,JSON.stringify(post, null, 2));
+			let post = posts[n],
+			id = posts.length - n;
+			if(post.id === undefined) {
+				post.id === undefined;
+				fs.writeFileSync(`${path}${post.url}/post.json`,JSON.stringify(post, null, 2));
+			}
 		}
 		
 		resolve(posts);

@@ -1,9 +1,9 @@
 // The name of the cache to use for this instance of the Service Worker
-var cacheName = 'v1.0.2';
+var cacheName = 'v1';
 
 // The set of files to cache
 var filesToCache = [
-  '.',
+  './',
   '/index.html',
   '/style.css',
   '/main.js'

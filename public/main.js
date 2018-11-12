@@ -20,6 +20,7 @@ window.onload = function() {
 			let color = colors[data[i].id % colors.length],
 			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
 			post = `<app-post style="color:${color}">
+			<app-post-header>
 			<app-post-date>
 			<app-post-day>${data[i].day}</app-post-day>
 			<app-post-month>${months[data[i].month]}</app-post-month>
@@ -29,6 +30,9 @@ window.onload = function() {
 			<app-post-title>${data[i].title}</app-post-title>
 			<p>${data[i].description}</p>
 			</app-post-info>
+			</app-post-header>
+			<app-post-content>
+			</app-post-content>
 			</app-post>`;
 			console.log(data[i].id);
 			document.querySelector('app-panel.blog').insertAdjacentHTML( 'beforeend', post );
