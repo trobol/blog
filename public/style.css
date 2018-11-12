@@ -5,7 +5,7 @@ h1 {
     background: url(/img/gif.gif) repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.3vw black;
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
     cursor: context-menu;
@@ -112,6 +112,8 @@ app-post {
     padding: 0;
     margin: 0;
     width: auto;
+    margin-bottom: 0.5vh;
+    display: block;
 }
 app-post-header {
     display: block;
@@ -121,7 +123,6 @@ app-post-header {
     width: auto;
     border: 1px solid black;
     background: white;
-    margin-bottom: 0.5vh;
 }
 app-post-info {
     display: inline-block;
@@ -160,6 +161,15 @@ app-post-month {
 }
 app-post-content {
     margin: 0 0.9%;
+    border: 0;
+    border-width: 0 1px 1px 1px;
+    width:98%;
+    display: block;
+    height: auto;
+    
+}
+app-post:focus app-post-content {
+    margin: 0 0.9%;
     border: 1px solid black;
     border-width: 0 1px 1px 1px;
     width:98%;
@@ -193,7 +203,6 @@ canvas {
     app-post-header {
         border: 3px solid black;
         height: 20vw;
-        margin-bottom: 1.5vh;
     }
     app-post-day {
         height: 12vw;
