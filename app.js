@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 				{
 					location:'/style.css',
 					path:'style.css',
-					type: 'application/octet-stream'
+					type: 'text/css'
 				},
 				{
 					location:'/main.js',
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 				{
 					location:'/fonts.css',
 					path:'fonts.css',
-					type: 'application/octet-stream'
+					type: 'text/css'
 				},
 				{
 					location:'/fonts/righteous-v6-latin-regular.woff2',

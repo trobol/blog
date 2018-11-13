@@ -12,8 +12,8 @@ module.exports = (res, f) => {
 		for(let file of f.files) {
 			let content = fs.readFileSync(`${f.root}/${file.path}`);
 			res.push(file.location, {
-				req: {'accept': '**/*'},
-				res: {'content-type': file.type}
+				request: {'accept': '**/*'},
+				response: {'content-type': file.type}
 			})
 			.on('error', err => {
 				console.log(err);
