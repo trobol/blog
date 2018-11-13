@@ -8,12 +8,12 @@ fs = require('fs');
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
 		let files =	[
-			fs.readFileSync('public/index.html'),
-			fs.readFileSync('public/style.css'),
-			fs.readFileSync('public/main.js'),
-			fs.readFileSync('/public/img/spinner.svg'),
-			fs.readFileSync('public/fonts.css'),
-			fs.readFileSync('public/fonts/righteous-v6-latin-regular.woff2')
+			fs.readFileSync('./public/index.html'),
+			fs.readFileSync('./public/style.css'),
+			fs.readFileSync('./public/main.js'),
+			fs.readFileSync('./public/img/spinner.svg'),
+			fs.readFileSync('./public/fonts.css'),
+			fs.readFileSync('./public/fonts/righteous-v6-latin-regular.woff2')
 		];
 		
 	  
