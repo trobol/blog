@@ -42,12 +42,12 @@ app.use(function(req, res, next) {
 				},
 				{
 					location:'/favicon.ico',
-					path:'/avicon.ico',
+					path:'favicon.ico',
 					type: 'image/x-icon'
 				},
 				{
 					location:'/manifest.json',
-					path:'/manifest.json',
+					path:'manifest.json',
 					type: 'application/manifest+json'
 				},
 				{
