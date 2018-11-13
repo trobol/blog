@@ -1,74 +1,49 @@
 const express = require('express'),
 app = express(),
 posts = require('./posts.js'),
+push = require('./push.js')
 path = require('path'),
 fs = require('fs');
 
 
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
-		let files =	[
-			fs.readFileSync(`${__dirname}/public/index.html`),
-			fs.readFileSync(`${__dirname}/public/style.css`),
-			fs.readFileSync(`${__dirname}/public/main.js`),
-			fs.readFileSync(`${__dirname}/public/img/spinner.svg`),
-			fs.readFileSync(`${__dirname}/public/fonts.css`),
-			fs.readFileSync(`${__dirname}/public/fonts/righteous-v6-latin-regular.woff2`)
-		];
-		
+		let files = {
+			files: [
+				{
+					location:'style.css',
+					path:'style.css',
+					type: 'text/css'
+				},
+				{
+					location:'main.js',
+					path:'main.js',
+					type: 'application/javascript'
+				},
+				{
+					location:'img/spinner.svg',
+					path:'img/spinner.svg',
+					type: 'image/svg+xml'
+				},
+				{
+					location:'fonts.css',
+					path:'fonts.css',
+					type: 'text/css'
+				},
+				{
+					location:'fonts/righteous-v6-latin-regular.woff2',
+					path:'fonts/righteous-v6-latin-regular.woff2',
+					type: 'font/woff2'
+				}
+			],
+			root:`${__dirname}/public/`
+		};
+
+		push(req, files);
+	
 	  
-			// Does the browser support push?
-			if (res.push){
-				console.log("push");
-				res.push('/style.css', {
-					req: {'accept': '**/*'},
-					res: {'content-type': 'text/css'}
-				})
-				.on('error', err => {
-				  console.log(err);
-				})
-				.end(files[1]);
-	  
-				res.push('/main.js', {
-					req: {'accept': '**/*'},
-					res: {'content-type': 'application/javascript'}
-				})
-				.on('error', err => {
-				  console.log(err);
-				})
-				.end(files[2]);
-	
-				res.push('/img/spinner.svg', {
-					req: {'accept': '**/*'},
-					res: {'content-type': 'image/svg+xml'}
-				})
-				.on('error', err => {
-				  console.log(err);
-				})
-				.end(files[3]);
-	
-				res.push('/fonts.css', {
-					req: {'accept': '**/*'},
-					res: {'content-type': 'text/css'}
-				})
-				.on('error', err => {
-				  console.log(err);
-				})
-				.end(files[4]);
-	
-				res.push('/fonts/righteous-v6-latin-regular.woff2', {
-					req: {'accept': '**/*'},
-					res: {'content-type': 'font/woff2'}
-				})
-				.on('error', err => {
-				  console.log(err);
-				})
-				.end(files[5]);
-	
-			}
-	  
-			res.writeHead(200);
-			res.end(files[0]);
+		res.writeHead(200);
+		res.end(fs.readFileSync(`${__dirname}/public/index.html`));
 		  
 	} else {
 		console.log(req.path);
