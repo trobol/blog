@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 					type: 'font/woff2'
 				}
 			],
-			root:`${__dirname}/public/`
+			root:`${__dirname}/public`
 		};
 
 		push(res, files);
