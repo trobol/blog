@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
 		  ]).then(files => {
 	  
 			// Does the browser support push?
-			if (res.push){
+			//if (res.push){
 				console.log("push");
 				res.push('/style.css', {
 					req: {'accept': '**/*'},
@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
 				})
 				.end(files[5]);
 	
-			}
+			//}
 	  
 			res.writeHead(200);
 			res.end(files[0]);
