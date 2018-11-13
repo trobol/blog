@@ -8,6 +8,7 @@ module.exports = (res, f) => {
 	}
 	*/
 	if (res.push){
+		console.log("Push");
 		for(let file of f.files) {
 			res.push(file.location, {
 				req: {'accept': '**/*'},
