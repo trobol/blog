@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 	  
 			// Does the browser support push?
 			if (res.push){
-	
+				console.log("push");
 				res.push('/style.css', {
 					req: {'accept': '**/*'},
 					res: {'content-type': 'text/css'}
