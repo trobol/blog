@@ -49,18 +49,12 @@ app.use(function(req, res, next) {
 					location:'/manifest.json',
 					path:'manifest.json',
 					type: 'application/manifest+json'
-				},
-				{
-					location:'/posts.json',
-					path:'',
-					type: 'application/json',
-					content:posts.posts,
 				}
 
 			],
 			root:`${__dirname}/public`
 		};
-
+		console.log(posts.posts);
 		push(res, files);
 		res.writeHead(200);
 		res.end(fs.readFileSync(`${__dirname}/public/index.html`));
