@@ -6,7 +6,10 @@ var filesToCache = [
   './',
   '/index.html',
   '/style.css',
-  '/main.js'
+  '/main.js',
+  '/img/spinner.svg',
+  '/fonts/righteous-v6-latin-regular.woff2',
+  'fonts.css'
 ];
 
 // Pre-caches the files when the Service Worker is installed

@@ -29,6 +29,7 @@ window.onload = function() {
 		</app-post-info>
 	</app-post-header>
 	<app-post-content>
+	<object type="image/svg+xml" data="/img/spinner.svg">Your browser does not support SVGs</object>
 	</app-post-content>
 </app-post>`;
 			console.log(data[i].id);
@@ -173,8 +174,8 @@ let app = {
 				index = (index + 1) % 7;
 				name.style.fontFamily = fonts[index];
 			},
-			'app-post': function(event) {
-				this.focus();
+			'app-post-header': function(event) {
+				this.parentElement.classList.toggle('active');
 
 				function load (event) {
 					fetch_text("http://www.yoursite.com/home.html").then((html) => {
