@@ -18,7 +18,7 @@ module.exports = (res, f) => {
 				  accept: '*/*'
 				},
 				response: {
-					'content-type': file.type
+					'Content-Type': file.type
 				}
 			})
 			stream.on('error', err => {
