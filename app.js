@@ -7,14 +7,15 @@ fs = require('fs');
 
 app.use(function(req, res, next) {
 	if(!path.extname(req.path)) {
-		Promise.all([
-			fs.readFile('public/index.html'),
-			fs.readFile('public/style.css'),
-			fs.readFile('public/main.js'),
-			fs.readFile('/public/img/spinner.svg'),
-			fs.readFile('public/fonts.css'),
-			fs.readFile('public/fonts/righteous-v6-latin-regular.woff2')
-		  ]).then(files => {
+		let files =	[
+			fs.readFileSync('public/index.html'),
+			fs.readFileSync('public/style.css'),
+			fs.readFileSync('public/main.js'),
+			fs.readFileSync('/public/img/spinner.svg'),
+			fs.readFileSync('public/fonts.css'),
+			fs.readFileSync('public/fonts/righteous-v6-latin-regular.woff2')
+		];
+		
 	  
 			// Does the browser support push?
 			if (res.push){
@@ -68,7 +69,7 @@ app.use(function(req, res, next) {
 	  
 			res.writeHead(200);
 			res.end(files[0]);
-		  }).catch(error => res.status(500).send(error.toString()));
+		  
 	} else {
 		console.log(req.path);
 		next();
