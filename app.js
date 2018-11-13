@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 				{
 					location:'/style.css',
 					path:'style.css',
-					type: 'text/plain'
+					type: 'text/css'
 				},
 				{
 					location:'/main.js',
@@ -28,20 +28,40 @@ app.use(function(req, res, next) {
 				{
 					location:'/fonts.css',
 					path:'fonts.css',
-					type: 'text/plain'
+					type: 'text/css'
 				},
 				{
 					location:'/fonts/righteous-v6-latin-regular.woff2',
 					path:'fonts/righteous-v6-latin-regular.woff2',
 					type: 'font/woff2'
+				},
+				{
+					location:'/img/background.gif',
+					path:'img/background.gif',
+					type: 'image/gif'
+				},
+				{
+					location:'/favicon.ico',
+					path:'/avicon.ico',
+					type: 'image/x-icon'
+				},
+				{
+					location:'/manifest.json',
+					path:'/manifest.json',
+					type: 'application/manifest+json'
+				},
+				{
+					location:'/posts.json',
+					path:'',
+					type: 'application/json',
+					content:posts.posts,
 				}
+
 			],
 			root:`${__dirname}/public`
 		};
 
 		push(res, files);
-	
-	  
 		res.writeHead(200);
 		res.end(fs.readFileSync(`${__dirname}/public/index.html`));
 		  
@@ -50,7 +70,7 @@ app.use(function(req, res, next) {
 		next();
 	}
 });	
-app.use(posts);
+app.use(posts.router);
 
 app.use(express.static(`${__dirname}/public`));
 

@@ -10,6 +10,10 @@ module.exports = (res, f) => {
 	if (res.push){
 		console.log("Push");
 		for(let file of f.files) {
+			let content = file.content;
+			if(!file.content) {
+				content = fs.readFileSync(`${f.root}/${file.path}`)
+			} 
 			res.push(file.location, {
 				req: {'accept': '**/*'},
 				res: {'content-type': file.type}
@@ -17,7 +21,7 @@ module.exports = (res, f) => {
 			.on('error', err => {
 				console.log(err);
 			})
-			.end(fs.readFileSync(`${f.root}/${file.path}`));
+			.end(content);
 			console.log(`Added ${f.root}/${file.path} at ${file.location}`);
 		}
 	}

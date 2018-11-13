@@ -2,7 +2,7 @@
 
 h1 {
     color: white;  /* Fallback: assume this color ON TOP of image */
-    background: url(/img/gif.gif) repeat;
+    background: url(/img/background.gif) repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.3vw black;
@@ -45,7 +45,7 @@ app-select {
     display: inline-block;
 }
 app-select:hover {
-    background: url(/img/gif.gif) repeat;
+    background: url(/img/background.gif) repeat;
     box-shadow: 4px 4px lightgrey;
     transform: translate(0, -7px);
 }
@@ -73,7 +73,7 @@ app-select:hover app-select-background {
 }
 
 app-select-background div:hover {
-    background: url(/img/gif.gif) repeat;
+    background: url(/img/background.gif) repeat;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-touch-callout: none; /* iOS Safari */

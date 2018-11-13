@@ -29,7 +29,71 @@ window.onload = function() {
 		</app-post-info>
 	</app-post-header>
 	<app-post-content>
-	<object type="image/svg+xml" data="/img/spinner.svg">Your browser does not support SVGs</object>
+	<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css"><![CDATA[
+	circle {
+		animation: grid 2.6s linear infinite;
+	}
+	 @keyframes grid {
+		0% {
+			fill: #4e2cac;
+		}
+		16.6% {
+			fill:#4186d3;
+		}
+		33.2% {
+			fill:#4cd8f1;
+		}
+		49.8% {
+			fill:#4df1cb;
+		}
+		66.4% {
+			fill:#ff6c9a;
+		}
+		83% {
+			fill:#e320a8;
+		}
+  	}
+	circle:nth-of-type(1) {
+		animation-delay:0s;
+	}
+	circle:nth-of-type(2) {
+		animation-delay:-0.4s;
+	}
+	circle:nth-of-type(3) {
+		animation-delay:-0.8s;
+	}
+	circle:nth-of-type(4) {
+		animation-delay:-0.4s;
+	}
+	circle:nth-of-type(5) {
+		animation-delay:-0.8s;
+	}
+	circle:nth-of-type(6) {
+		animation-delay:-1.2s;
+	}
+	circle:nth-of-type(7) {
+		animation-delay:-0.8s;
+	}
+	circle:nth-of-type(8) {
+		animation-delay:-1.2s;
+	}
+	circle:nth-of-type(9) {
+		animation-delay:-1.6s;
+	}
+    ]]></style>
+<circle cx="10" cy="10" r="10" fill="#4e2cac"/>
+<circle cx="50" cy="10" r="10" fill="#4e2cac"/>
+<circle cx="90" cy="10" r="10" fill="#4e2cac"/>
+<circle cx="10" cy="50" r="10" fill="#4e2cac"/>
+<circle cx="50" cy="50" r="10" fill="#4e2cac"/>
+<circle cx="90" cy="50" r="10" fill="#4e2cac"/>
+<circle cx="10" cy="90" r="10" fill="#4e2cac"/>
+<circle cx="50" cy="90" r="10" fill="#4e2cac"/>
+<circle cx="90" cy="90" r="10" fill="#4e2cac"/>
+</svg>
+
 	</app-post-content>
 </app-post>`;
 			console.log(data[i].id);
