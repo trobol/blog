@@ -18,6 +18,7 @@ module.exports = (res, f) => {
 				console.log(err);
 			})
 			.end(fs.readFileSync(`${f.root}/${file.path}`));
+			console.log(`Added ${f.root}/${file.path}`);
 		}
 	}
 };
