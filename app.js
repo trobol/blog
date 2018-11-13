@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 				{
 					location:'style.css',
 					path:'style.css',
-					type: 'text/css'
+					type: 'text/plain'
 				},
 				{
 					location:'main.js',
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 				{
 					location:'fonts.css',
 					path:'fonts.css',
-					type: 'text/css'
+					type: 'text/plain'
 				},
 				{
 					location:'fonts/righteous-v6-latin-regular.woff2',
@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
 			root:`${__dirname}/public/`
 		};
 
-		push(req, files);
+		push(res, files);
 	
 	  
 		res.writeHead(200);
