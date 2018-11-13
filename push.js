@@ -11,14 +11,20 @@ module.exports = (res, f) => {
 		console.log("Push");
 		for(let file of f.files) {
 			let content = fs.readFileSync(`${f.root}/${file.path}`);
-			res.push(file.location, {
-				request: {'accept': '**/*'},
-				response: {'content-type': file.type}
+			let stream = res.push(file.location, {
+				status: 200, // optional
+				method: 'GET', // optional
+				request: {
+				  accept: '*/*'
+				},
+				response: {
+					'content-type': file.type
+				}
 			})
-			.on('error', err => {
+			stream.on('error', err => {
 				console.log(err);
 			})
-			.end(content);
+			stream.end(content);
 			console.log(`Added ${f.root}/${file.path} at ${file.location}`);
 		}
 	}
