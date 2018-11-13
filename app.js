@@ -11,27 +11,27 @@ app.use(function(req, res, next) {
 		let files = {
 			files: [
 				{
-					location:'style.css',
+					location:'/style.css',
 					path:'style.css',
 					type: 'text/plain'
 				},
 				{
-					location:'main.js',
+					location:'/main.js',
 					path:'main.js',
 					type: 'application/javascript'
 				},
 				{
-					location:'img/spinner.svg',
+					location:'/img/spinner.svg',
 					path:'img/spinner.svg',
 					type: 'image/svg+xml'
 				},
 				{
-					location:'fonts.css',
+					location:'/fonts.css',
 					path:'fonts.css',
 					type: 'text/plain'
 				},
 				{
-					location:'fonts/righteous-v6-latin-regular.woff2',
+					location:'/fonts/righteous-v6-latin-regular.woff2',
 					path:'fonts/righteous-v6-latin-regular.woff2',
 					type: 'font/woff2'
 				}
