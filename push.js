@@ -7,6 +7,7 @@ module.exports = (res, f) => {
 		type:
 	}
 	*/
+	console.log("PUSH", res.push);
 	if (res.push){
 		console.log("Push");
 		for(let file of f.files) {
