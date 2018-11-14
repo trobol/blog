@@ -11,20 +11,6 @@ colors = [
 	'#4df1cb'
 ],
 bubbles = [];
-function draw() {
-	app.ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-	bubbles.forEach(bubble => {
-		bubble.move();
-		app.ctx.beginPath();
-		app.ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2* Math.PI);
-		app.ctx.fillStyle = bubble.color;
-		app.ctx.fill(); 
-	});
-	if(Math.random() < 0.03) {
-		addBubble();
-	}
-	window.requestAnimationFrame(draw);
-}	
 function Bubble(x, y, size, color, speed) {
 	this.x = x;
 	this.y = y;
@@ -36,7 +22,7 @@ Bubble.prototype.move = function() {
 	this.x += this.speed * up.x;
 	this.y += this.speed * up.y; 
 }
-function addBubble() {
+Bubble.add = () => {
 	let size = Math.random() * 15 + 5,
 	x = Math.random() * app.canvas.width,
 	speed = (Math.random() + 0.5)/2,
@@ -45,7 +31,22 @@ function addBubble() {
 	if(bubbles.length > 25) {
 		bubbles.shift();
 	}
+};
+Bubble.draw = () => {
+	app.ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
+	bubbles.forEach(bubble => {
+		bubble.move();
+		app.ctx.beginPath();
+		app.ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2* Math.PI);
+		app.ctx.fillStyle = bubble.color;
+		app.ctx.fill(); 
+	});
+	if(Math.random() < 0.03) {
+		Bubble.add();
+	}
+	window.requestAnimationFrame(Bubble.draw);
 }
+
 window.addEventListener('resize', function(evt) {
 	app.canvas.width = window.innerWidth;
 	app.canvas.height = window.innerHeight;
@@ -253,8 +254,7 @@ let app = {
 		app.canvas.width = window.innerWidth;
 		app.canvas.height = window.innerHeight;
 		
-		window.requestAnimationFrame(draw);
-		addBubble();
+		window.requestAnimationFrame(Bubble.draw);
 		app.container = document.querySelector('app-container');
 
 		app.load('/posts.json').then(app.appendPosts);
