@@ -54,8 +54,7 @@ app.use(function(req, res, next) {
 			],
 			root:`${__dirname}/public`
 		};
-		console.log(posts.posts);
-		push(res, files);
+		//push(res, files);
 		res.writeHead(200);
 		res.end(fs.readFileSync(`${__dirname}/public/index.html`));
 		  
