@@ -40,6 +40,26 @@ html, body {
     margin: 0;
     overflow: hidden;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
 app-menu {
     margin: auto;
     display: block;
@@ -121,6 +141,7 @@ app-panel {
     height: 0;
     font-family: 'Righteous', cursive;
     overflow: hidden;
+    overflow-y: scroll;
     transition:0.5s;
     float:right;
 }
