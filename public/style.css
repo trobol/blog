@@ -2,7 +2,10 @@
 
 h1 {
     color: white;  /* Fallback: assume this color ON TOP of image */
-    background: url(/img/background.gif) repeat;
+    /*background: url(/img/background.webp) repeat; */
+    background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a);
+    background-size: 400% 400%;
+    animation: Gradient 5s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0.3vw black;
@@ -17,14 +20,45 @@ h1 {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     margin: 0;
     font-size: 12vw;
-    background-size: 19.5vw;
+   
 }
 
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
 html, body {
     width: 100vw;
     height: 100%;
     margin: 0;
     overflow: hidden;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 app-menu {
     margin: auto;
@@ -45,7 +79,9 @@ app-select {
     display: inline-block;
 }
 app-select:hover {
-    background: url(/img/background.gif) repeat;
+    background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
+    background-size: 400% 400%;
+    animation: Gradient 5s ease infinite;
     box-shadow: 4px 4px lightgrey;
     transform: translate(0, -7px);
 }
@@ -72,8 +108,10 @@ app-select:hover app-select-background {
     background: white;
 }
 
-app-select-background div:hover {
-    background: url(/img/background.gif) repeat;
+app-select div:hover {
+    background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
+    background-size: 400% 400%;
+    animation: Gradient 5s ease infinite;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -103,6 +141,7 @@ app-panel {
     height: 0;
     font-family: 'Righteous', cursive;
     overflow: hidden;
+    overflow-y: scroll;
     transition:0.5s;
     float:right;
 }
