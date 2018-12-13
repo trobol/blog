@@ -1,9 +1,9 @@
 {
 	"name": "Thornton's Blog",
-	"short_name": "TF Blog",
+	"short_name": "Thornton",
 	"description": "",
 	"lang": "en-US",
-	"start_url": "./",
+	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#FFFFFF",
 	"background_color" : "#FFFFFF",
