@@ -106,7 +106,7 @@ let app = {
 				app.setState('menu');
 				app.setMenu('projects');
 			},
-			'h2': function(element) {
+			'h1': function(element) {
 				index = (index + 1) % 7;
 				name.style.fontFamily = fonts[index];
 			},
