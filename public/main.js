@@ -1,16 +1,16 @@
 
 let canvas, ctx,
-up = {x:0, y: -1},
-bottom = {x:0, y:50},
-colors = [
-	'#4e2cac',
-	'#4186d3',
-	'#4cf1cc',
-	'#ff6c9a',
-	'#e320a8',
-	'#4df1cb'
-],
-bubbles = [];
+	up = { x: 0, y: -1 },
+	bottom = { x: 0, y: 50 },
+	colors = [
+		'#4e2cac',
+		'#4186d3',
+		'#4cf1cc',
+		'#ff6c9a',
+		'#e320a8',
+		'#4df1cb'
+	],
+	bubbles = [];
 function Bubble(x, y, size, color, speed) {
 	this.x = x;
 	this.y = y;
@@ -18,17 +18,17 @@ function Bubble(x, y, size, color, speed) {
 	this.color = color;
 	this.speed = speed;
 }
-Bubble.prototype.move = function() {
+Bubble.prototype.move = function () {
 	this.x += this.speed * up.x;
-	this.y += this.speed * up.y; 
+	this.y += this.speed * up.y;
 }
 Bubble.add = () => {
 	let size = Math.random() * 15 + 5,
-	x = Math.random() * app.canvas.width,
-	speed = (Math.random() + 0.5)/2,
-	color = Math.floor(Math.random() * 5);
+		x = Math.random() * app.canvas.width,
+		speed = (Math.random() + 0.5) / 2,
+		color = Math.floor(Math.random() * 5);
 	bubbles.push(new Bubble(x, app.canvas.height + size, size, colors[color], speed));
-	if(bubbles.length > 25) {
+	if (bubbles.length > 25) {
 		bubbles.shift();
 	}
 };
@@ -37,104 +37,104 @@ Bubble.draw = () => {
 	bubbles.forEach(bubble => {
 		bubble.move();
 		app.ctx.beginPath();
-		app.ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2* Math.PI);
+		app.ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2 * Math.PI);
 		app.ctx.fillStyle = bubble.color;
-		app.ctx.fill(); 
+		app.ctx.fill();
 	});
-	if(Math.random() < 0.03) {
+	if (Math.random() < 0.03) {
 		Bubble.add();
 	}
 	window.requestAnimationFrame(Bubble.draw);
 }
 
-window.addEventListener('resize', function(evt) {
+window.addEventListener('resize', function (evt) {
 	app.canvas.width = window.innerWidth;
 	app.canvas.height = window.innerHeight;
 });
 
 
 let app = {
-	load: function(url) {
+	load: function (url) {
 		return fetch(url)
-		.then(function(response) {
-			let content_type = response.headers.get('Content-Type');
-			content_type = content_type.slice(0,content_type.indexOf(';'));
-			let handler = app.loadHandlers[content_type];
-			console.log(content_type);
-			if(handler) {
-				return new Promise((resolve, reject) => {
-					resolve(handler(response));
-				});
-			} else {
-				return response;
-			}
-		});
+			.then(function (response) {
+				let content_type = response.headers.get('Content-Type');
+				content_type = content_type.slice(0, content_type.indexOf(';'));
+				let handler = app.loadHandlers[content_type];
+				console.log(content_type);
+				if (handler) {
+					return new Promise((resolve, reject) => {
+						resolve(handler(response));
+					});
+				} else {
+					return response;
+				}
+			}, console.error('Failed to load: ' + url));
 	},
 	loadHandlers: {
-		'application/json':(response) => {
+		'application/json': (response) => {
 			return response.json();
 		},
-		'text/html': function(response) {
+		'text/html': function (response) {
 			return response.text();
 		}
 	},
 	state: 'start',
-	setState: function(state) {
-		if(state != this.state) {
+	setState: function (state) {
+		if (state != this.state) {
 			app.container.setAttribute('state', state);
 			this.state = state;
 		}
 	},
 	menu: 'none',
-	setMenu: function(menu) {
-		if(app.menu != menu) {
+	setMenu: function (menu) {
+		if (app.menu != menu) {
 			app.container.setAttribute('menu', menu);
 			this.menu = menu;
 		}
 	},
 	listeners: {
 		mousedown: {
-			'app-select.blog': function(event) {
+			'app-select.blog': function (event) {
 				app.setState('menu');
 				app.setMenu('blog');
 			},
-			'app-select.info': function(event) {
+			'app-select.info': function (event) {
 				app.setState('menu');
 				app.setMenu('info');
 			},
-			'app-select.projects': function(event) {
+			'app-select.projects': function (event) {
 				app.setState('menu');
 				app.setMenu('projects');
 			},
-			'h1': function(element) {
+			'h1': function (element) {
 				index = (index + 1) % 7;
 				name.style.fontFamily = fonts[index];
 			},
-			'app-post-header': function(event) {
+			'app-post-header': function (event) {
 				let parent = this.parentElement;
 				parent.classList.toggle('active');
-				if(this.hasAttribute("loaded")) {
-					
+				if (this.hasAttribute("loaded")) {
+
 				} else {
 					app.load('/posts/' + parent.getAttribute('app-post-path') + '/index.html').then((data) => {
 						parent.querySelector('app-post-content').innerHTML = data;
-					
+
 						this.setAttribute('loaded', true);
 					});
 				}
-				
+
 			}
 		},
 		touchstart: {
-			'app-select.blog': function(event) {
+			'app-select.blog': function (event) {
 				app.setState('menu');
 				app.setMenu('blog');
 			},
-			'app-select.info': function(event) {
+			'app-select.info': function (event) {
 				app.setState('menu');
 				app.setMenu('info');
 			},
-			'app-select.projects': function(event) {
+			'app-select.projects': function (event) {
 				app.setState('menu');
 				app.setMenu('projects');
 			}
@@ -143,26 +143,26 @@ let app = {
 		}
 
 	},
-	registerListeners: function() {
-		for(let l in app.listeners) {
+	registerListeners: function () {
+		for (let l in app.listeners) {
 			let listeners = app.listeners[l];
-			for(let e in listeners) {
+			for (let e in listeners) {
 				document.querySelectorAll(e).forEach(function (k) {
-						k.addEventListener(l, listeners[e], {passive: true, capture:false});
+					k.addEventListener(l, listeners[e], { passive: true, capture: false });
 				});
 			}
-			
+
 		}
-		
+
 	},
 	appendPosts: (data) => {
-		let blogPanel =  document.querySelector('app-panel.blog');
-		for(let i of data) {
-			
+		let blogPanel = document.querySelector('app-panel.blog');
+		for (let i of data) {
+
 			let color = colors[i.id % colors.length],
-			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
-			post = 
-`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1">
+				months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+				post =
+					`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1">
 	<app-post-header>
 		<app-post-date>
 			<app-post-day>${i.day}</app-post-day>
@@ -242,30 +242,30 @@ let app = {
 
 	</app-post-content>
 </app-post>`;
-			
-			blogPanel.insertAdjacentHTML( 'beforeend', post );
+
+			blogPanel.insertAdjacentHTML('beforeend', post);
 		}
 		app.registerListeners();
 	},
-	onload: function() {
+	onload: function () {
 
 		app.canvas = document.getElementById("canvas");
 		app.ctx = app.canvas.getContext('2d');
 		app.canvas.width = window.innerWidth;
 		app.canvas.height = window.innerHeight;
-		
+
 		window.requestAnimationFrame(Bubble.draw);
 		app.container = document.querySelector('app-container');
 
 		app.load('/posts.json').then(app.appendPosts);
 		app.registerListeners();
 		let path = window.location.pathname;
-		if(path !== '/') {
+		if (path !== '/') {
 			path = path.split('/');
 			console.log(path);
 		}
 
-		
+
 	}
 }
 
