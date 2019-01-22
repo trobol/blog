@@ -68,7 +68,7 @@ let app = {
 				} else {
 					return response;
 				}
-			}, console.error('Failed to load: ' + url));
+			});
 	},
 	loadHandlers: {
 		'application/json': (response) => {

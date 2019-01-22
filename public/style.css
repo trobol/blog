@@ -20,7 +20,7 @@ h1 {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     margin: 0;
     font-size: 12vw;
-   
+    
 }
 
 @keyframes Gradient {
@@ -122,7 +122,7 @@ app-select div:hover {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 app-content {
-    width: 51vw;
+    width: 61vw;
     height: 75vh;
     display: block;
     margin: auto;
@@ -153,15 +153,34 @@ app-post {
     width: auto;
     margin-bottom: 0.5vh;
     display: block;
+    transition:padding 1s;
+}
+app-post.active {
 }
 app-post-header {
     display: block;
     padding: 0;
-    margin: 0;
     height: 12vw;
-    width: auto;
+    width: 80%;
     border: 1px solid black;
     background: white;
+    margin: 0 10%;
+    transition: 0.5s;
+    position: relative;
+}
+app-post-header:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -2;
+    box-shadow: 9px 11px 0px 0px #0000006e;
+    transition: 0.5s;
+}
+.active app-post-header:before {
+    box-shadow: 9px 11px 0px 0px #0000006e;
 }
 app-post-info {
     display: inline-block;
@@ -185,7 +204,7 @@ app-post-day {
     font-size: 8vw;
     text-align: center;
     margin: 0 10px;
-    height: 8vw;
+    height: 70%;
     display: block;
 }
 app-post-date {
@@ -199,35 +218,36 @@ app-post-month {
     font-size: 2.5vw;
 }
 app-post-content {
-    margin: 0 0.9%;
-    border: 0;
-    border-width: 0 1px 1px 1px;
-    width:87%;
+    border: 1px solid black;
+    border-width: 0 3px 3px 3px;
+    width:70%;
     display: block;
     height: 0;
     overflow: hidden;
-   
-    padding: 0;
+    text-align: center;
+    padding: 0 5%;
     background-color: rgba(255, 255, 255, 0.96);
+    transition: 0.5s;
+    margin: 0 10%;
+    position: relative;
+    top: -3px;
+    z-index: -1;
 }
 app-post.active app-post-content {
     padding: 5%;
-    margin: 0 0.9%;
-    border: 1px solid black;
-    border-width: 0 1px 1px 1px;
-    width:87%;
-    display: block;
     height: 100px;
-    text-align: center;
 }
-app-post object{
-
+app-post.active app-post-header {
+    height: 22vw;
+    margin: 0 5%;
+    width: 90%;
+    font-size: 11vw;
 }
 app-post:focus {
     outline: none;
 }
 canvas {
-    z-index: -1;
+    z-index: -3;
     position: fixed;
     top: 0;
 }
@@ -244,7 +264,7 @@ canvas {
         height: 13vw;
     }
     app-content {
-        width: 80vw;
+        width: 100vw;
     }
     app-post {
         margin-bottom: 1.5vh;
@@ -252,19 +272,20 @@ canvas {
     app-post-header {
         border: 3px solid black;
         height: 20vw;
+        font-size: 10vw;
     }
     app-post-day {
-        height: 12vw;
-        font-size: 12vw;
+        height: 60%;
+        font-size: 1.2em;
     }
     app-post-month { 
-        font-size: 5.5vw;
+        font-size: 0.55em;
     }
     app-post-title {
-        font-size: 8vw;
+        font-size: 0.8em;
     }
     app-post-info p {
-        font-size: 3vw;
+        font-size: 0.3em;
     }
     app-post-date {
         margin: 0 10px;

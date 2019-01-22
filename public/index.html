@@ -1,59 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#FFFFFF"/>
+    <meta name="theme-color" content="#FFFFFF" />
     <link rel="manifest" href="manifest.json">
     <link href="fonts.css" rel="stylesheet">
     <meta charset="utf-8" />
     <meta name="Description" content="Author: Thornton Fernbacher">
     <title>Thornton</title>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    
+
     <script type="text/javascript">
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/serviceworker.js')
-          .then(function(reg) {
-            console.log('Service Worker registration succeeded.');
-          }).catch(function(error) {
-            console.log('Service Worker registration failed with ' + error);
-          });
-          
+            navigator.serviceWorker.register('/serviceworker.js')
+                .then(function (reg) {
+                    console.log('Service Worker registration succeeded.');
+                }).catch(function (error) {
+                    console.log('Service Worker registration failed with ' + error);
+                });
+
             let deferredPrompt;
             window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later.
-            deferredPrompt = e;
+                // Prevent Chrome 67 and earlier from automatically showing the prompt
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;
             });
         }
-      </script>
-      <script src="main.js"></script>
-      <link rel="preload" as="font" href="/fonts/righteous-v6-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    </script>
+    <script src="main.js"></script>
+    <link rel="preload" as="font" href="/fonts/righteous-v6-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
 </head>
+
 <body>
     <app-container>
         <app-header>
             <h1 id="name">Thornton</h1>
             <app-menu>
-                <app-select class="info"><app-select-background><div>Info</div></app-select-background></app-select>
-                <app-select class="projects"><app-select-background><div>Projects</div></app-select-background></app-select>
-                <app-select class="blog"><app-select-background><div>Blog</div></app-select-background></app-select>
+                <app-select class="info">
+                    <app-select-background>
+                        <div>Info</div>
+                    </app-select-background>
+                </app-select>
+                <app-select class="projects">
+                    <app-select-background>
+                        <div>Projects</div>
+                    </app-select-background>
+                </app-select>
+                <app-select class="blog">
+                    <app-select-background>
+                        <div>Blog</div>
+                    </app-select-background>
+                </app-select>
             </app-menu>
         </app-header>
-            <canvas id="canvas"></canvas>
-            <app-content>
-                <app-panel class="info">
-                   
-                </app-panel>
-                <app-panel class="projects">
-                
-                </app-panel>
-                <app-panel class="blog">
-                    
-                </app-panel>
-            </app-content>
+        <canvas id="canvas"></canvas>
+        <app-content>
+            <app-panel class="info">
+
+            </app-panel>
+            <app-panel class="projects">
+
+            </app-panel>
+            <app-panel class="blog">
+
+            </app-panel>
+        </app-content>
     </app-container>
-    
+
 </body>
+
 </html>
