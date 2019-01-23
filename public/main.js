@@ -114,13 +114,19 @@ let app = {
 		click: {
 			'app-post-header': function (event) {
 				let parent = this.parentElement,
-				active = parent.classList.contains('active');
-			
-				for(let e of document.getElementsByClassName('active')) {
+					active = parent.classList.contains('active');
+
+				for (let e of document.getElementsByClassName('active')) {
 					e.classList.remove('active');
 				}
-				if(!active)
+				if (!active) {
+					window.scrollTo({
+						top: parent.offset,
+						left: 0,
+						behavior: 'smooth'
+					});
 					parent.classList.add('active');
+				}
 				if (this.hasAttribute("loaded")) {
 
 				} else {
@@ -191,6 +197,10 @@ let app = {
 			blogPanel.insertAdjacentHTML('beforeend', post);
 		}
 		app.registerListeners();
+		let posts = document.getElementsByTagName('app-post');
+		for (let p of posts) {
+			p.offset = getOffset(p).top - app.header.offsetHeight
+		}
 	},
 	onload: function () {
 
@@ -201,6 +211,7 @@ let app = {
 
 		window.requestAnimationFrame(Bubble.draw);
 		app.container = document.body;
+		app.header = document.getElementsByTagName('app-header')[0];
 
 		app.load('/posts.json').then(app.appendPosts);
 		app.registerListeners();
@@ -213,5 +224,14 @@ let app = {
 
 	}
 }
-
+function getOffset(el) {
+	var _x = 0;
+	var _y = 0;
+	while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+		_x += el.offsetLeft - el.scrollLeft;
+		_y += el.offsetTop - el.scrollTop;
+		el = el.offsetParent;
+	}
+	return { top: _y, left: _x };
+}
 window.onload = app.onload;

@@ -71,9 +71,10 @@ app-header {
     position: sticky;
     top: 0;
     z-index: 2;
+    background: linear-gradient(white 90%, rgba(255,255,255,1));
 } 
 app-select {
-    transition: 0.2s;
+    transition: 0.15s;
     box-shadow: 0px 0px lightgrey;
     height: 8vw;
     display: inline-block;
@@ -86,7 +87,10 @@ app-select:hover {
     box-shadow: 4px 4px lightgrey;
     transform: translate(0, -7px);
 }
-
+app-select:active {
+    box-shadow: 0px 0px lightgrey;
+    transform: translate(0, 0px);
+}
 
 app-select-background div {
     font-size: 3.5vw;
@@ -99,13 +103,17 @@ app-select-background div {
     cursor: context-menu;
     -webkit-text-fill-color: white;
     -webkit-text-stroke: 0.3vw black;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 app-select-background {
     display: block;
     margin: 1vw;
-}
-app-select:hover app-select-background {
     background: white;
 }
 
@@ -115,12 +123,7 @@ app-select:hover div {
     animation: Gradient 5s ease infinite;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    
 }
 app-content {
     width: 61vw;
@@ -185,7 +188,7 @@ app-post-header {
     border: 1px solid black;
     background: white;
     margin: 0 10%;
-    transition: 0.5s;
+    transition: 0.3s;
     position: relative;
 }
 app-post-header:before {
@@ -247,7 +250,7 @@ app-post-content {
     text-align: center;
     padding: 0 5%;
     background-color: rgba(255, 255, 255, 0.96);
-    transition: 0.5s;
+    transition: 0.3s;
     margin: 0 10%;
     position: relative;
     top: -3px;
@@ -258,6 +261,12 @@ app-post.active app-post-content {
     height: 100px;
 }
 app-post.active app-post-header {
+    height: 22vw;
+    margin: 0 5%;
+    width: 90%;
+    font-size: 11vw;
+}
+app-post:active app-post-header {
     height: 22vw;
     margin: 0 5%;
     width: 90%;
