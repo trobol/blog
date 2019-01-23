@@ -255,7 +255,7 @@ let app = {
 		app.canvas.height = window.innerHeight;
 
 		window.requestAnimationFrame(Bubble.draw);
-		app.container = document.querySelector('app-container');
+		app.container = document.body;
 
 		app.load('/posts.json').then(app.appendPosts);
 		app.registerListeners();

@@ -2,7 +2,6 @@
 
 h1 {
     color: white;  /* Fallback: assume this color ON TOP of image */
-    /*background: url(/img/background.webp) repeat; */
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a);
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
@@ -38,28 +37,27 @@ html, body {
     width: 100vw;
     height: 100%;
     margin: 0;
-    overflow: hidden;
 }
-/* width */
+/* 
 ::-webkit-scrollbar {
     width: 0;
 }
 
-/* Track */
+
 ::-webkit-scrollbar-track {
     background: none; 
 }
 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px; 
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+*/
 app-menu {
     margin: auto;
     display: block;
@@ -68,9 +66,11 @@ app-menu {
 app-header {
     transition: 0.5s;
     width: 100vw;
-    height: 100%;
     margin: 0;
     display: block;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 } 
 app-select {
     transition: 0.2s;
@@ -78,6 +78,9 @@ app-select {
     height: 8vw;
     display: inline-block;
 }
+app-select::before {
+    
+} 
 app-select:hover {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
@@ -108,7 +111,7 @@ app-select:hover app-select-background {
     background: white;
 }
 
-app-select div:hover {
+app-select:hover div {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
@@ -126,22 +129,40 @@ app-content {
     height: 75vh;
     display: block;
     margin: auto;
+    display: grid;
+    grid-template-columns: 100vw 100vw 100vw;
+    grid-template-rows: auto;
+    position: relative;
+    transition: 0.5s;
+    left:0vw;
+    transition-timing-function: cubic-bezier(0.93, 0.1, 0, 1.01);
 }
-app-container[menu=blog] app-panel.blog {
-    height: 100%;
+
+[menu=info] app-content {
+    height: 0vw;
 }
-app-container[menu=projects] app-panel.projects {
-    height: 100%;
+[menu=projects] app-content {
+    left:-100vw;
 }
-app-container[menu=info] app-panel.info {
-    height: 100%;
+[menu=blog] app-content {
+    left: -200vw
+}
+app-panel.info {
+    grid-column: 1;
+    grid-row: 1;
+}
+app-panel.projects {
+    grid-column: 2;
+    grid-row: 1;
+}
+app-panel.blog {
+    grid-column: 3;
+    grid-row: 1;
 }
 app-panel {
     width: 100%;
-    height: 0;
+    height: 100vw;
     font-family: 'Righteous', cursive;
-    overflow: hidden;
-    overflow-y: scroll;
     transition:0.5s;
     float:right;
 }
@@ -156,6 +177,7 @@ app-post {
     transition:padding 1s;
 }
 app-post.active {
+
 }
 app-post-header {
     display: block;
@@ -176,11 +198,11 @@ app-post-header:before {
     left: 0;
     right: 0;
     z-index: -2;
-    box-shadow: 9px 11px 0px 0px #0000006e;
+    box-shadow: 9px 11px 0px 0px #00000026;
     transition: 0.5s;
 }
 .active app-post-header:before {
-    box-shadow: 9px 11px 0px 0px #0000006e;
+    box-shadow: 9px 11px 0px 0px #00000026;
 }
 app-post-info {
     display: inline-block;
@@ -294,7 +316,7 @@ canvas {
 
 /* MENU STATE */
 
-app-container[state=menu] app-header {
+[state=menu] app-header {
     height:auto;
     padding-bottom: 1vh;
 }
