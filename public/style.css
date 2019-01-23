@@ -78,9 +78,7 @@ app-select {
     height: 8vw;
     display: inline-block;
 }
-app-select::before {
-    
-} 
+
 app-select:hover {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
