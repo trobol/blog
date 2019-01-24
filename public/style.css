@@ -39,26 +39,26 @@ html, body {
     margin: 0;
     overflow-x: hidden;
 }
-/* 
+
 ::-webkit-scrollbar {
-    width: 0;
+    width: 18px;
+    height: 18px;
 }
-
-
-::-webkit-scrollbar-track {
-    background: none; 
-}
-
-
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px; 
+    height: 6px;
+    border: 6px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
 }
-*/
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
 app-menu {
     margin: auto;
     display: block;
@@ -80,12 +80,12 @@ app-select {
     height: calc(100% - 10px);
     width: calc(28% + 20px);
     display: inline-block;
-}
-
-app-select:hover {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
+}
+
+app-select:hover {
     box-shadow: 4px 4px lightgrey;
     transform: translate(0, -7px);
 }
@@ -95,6 +95,9 @@ app-select:active {
 }
 
 app-select-background div {
+    background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
+    background-size: 400% 400%;
+    animation: Gradient 5s ease infinite;
     font-size: 3.5vw;
     height: 4vw;
     padding: 5px;
@@ -105,6 +108,7 @@ app-select-background div {
     cursor: context-menu;
     -webkit-text-fill-color: white;
     -webkit-text-stroke: 0.3vw black;
+    -webkit-background-clip: text;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -112,15 +116,6 @@ app-select-background div {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
-
-app-select-background {
-    display: block;
-    margin: 5px;
-    background: white;
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
-}
-
 app-select:hover div {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
@@ -128,8 +123,21 @@ app-select:hover div {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
+app-select-background {
+    display: block;
+    border:5px solid white;
+    background: white;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+}
+app-select:hover app-select-background {
+    margin: 5px;
+    border:0;
+}
+
 app-content {
-    width: 61vw;
+    width: 100%;
     height: 200vh;
     display: block;
     margin: auto;
@@ -293,7 +301,7 @@ canvas {
         height: 13vw;
     }
     app-content {
-        width: 100vw;
+        width: 100%;
     }
     app-post {
         margin-bottom: 1.5vh;
