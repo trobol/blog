@@ -7,7 +7,7 @@
                 H51.5 
                 V0 Z
                 ">
-            <animate fill="freeze" animationDelay="-0.5s" attributeName="d" dur="1s" end=".begin + 0.1s" repeatCount="infinite" to="
+            <animate fill="freeze" begin="0s" attributeName="d" end="" dur="100s" restart="always"  to="
         M81.6 0 
         H0
         V-10
