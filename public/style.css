@@ -1,24 +1,8 @@
 /* DEFAULT STATE */
 
 #name {
-    color: white;  /* Fallback: assume this color ON TOP of image */
-    background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a);
-    background-size: 400% 400%;
-    animation: Gradient 5s ease infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.3vw black;
-    text-align: center;
-    font-family: 'IBM Plex Sans', sans-serif;
-    cursor: context-menu;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-    margin: 0;
-    font-size: 12vw;
+    height: 7vh;
+    width: 1.21vh;
 }
 
 @keyframes Gradient {
