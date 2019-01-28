@@ -1,6 +1,6 @@
 /* DEFAULT STATE */
 
-h1 {
+#name {
     color: white;  /* Fallback: assume this color ON TOP of image */
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a);
     background-size: 400% 400%;
@@ -19,7 +19,6 @@ h1 {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     margin: 0;
     font-size: 12vw;
-    
 }
 
 @keyframes Gradient {
