@@ -2,7 +2,7 @@
 
 #name {
     height: 7vh;
-    width: 1.21vh;
+    width: 40.266vh;
 }
 
 @keyframes Gradient {
@@ -206,6 +206,7 @@ app-post-info p {
     margin:0;
     font-size: 1.5vw;
     color: black;
+    font-family: monospace;
 }
 app-post-title {
     font-size: 5.5vw;
