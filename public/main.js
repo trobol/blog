@@ -203,7 +203,7 @@ let app = {
 		}
 	},
 	onload: function () {
-
+		manageSvg();
 		app.canvas = document.getElementById("canvas");
 		app.ctx = app.canvas.getContext('2d');
 		app.canvas.width = window.innerWidth;
@@ -233,5 +233,20 @@ function getOffset(el) {
 		el = el.offsetParent;
 	}
 	return { top: _y, left: _x };
+}
+let svg;
+function manageSvg() {
+	svg = document.getElementById("name").contentDocument.getElementById("paths");
+	svg.pauseAnimations();
+	document.body.addEventListener('scroll', (e) => {
+		let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+		if (value > 4) return;
+		window.requestAnimationFrame(function () {
+			let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+			svg.setCurrentTime(value);
+
+			console.log(value);
+		});
+	});
 }
 window.onload = app.onload;
