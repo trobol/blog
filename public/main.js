@@ -245,7 +245,7 @@ function manageSvg() {
 		window.requestAnimationFrame(function () {
 			let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
 			if(value > 1) value = 1;
-			name.style.width = 100*value + 'vw';
+			name.style.width = 100*value + '%';
 			svg.setCurrentTime(value);
 		});
 	});
