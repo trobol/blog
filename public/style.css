@@ -2,7 +2,7 @@
 
 #name {
     height: 5.2vh;
-    width: 30.2vh;
+    min-width: 30.2vh;
 }
 
 @keyframes Gradient {

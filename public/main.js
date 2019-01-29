@@ -234,18 +234,19 @@ function getOffset(el) {
 	}
 	return { top: _y, left: _x };
 }
-let svg;
 function manageSvg() {
-	svg = document.getElementById("name").contentDocument.getElementById("paths");
+	let name = document.getElementById("name"),
+	svg = name.contentDocument.getElementById("paths");
 	svg.pauseAnimations();
+	
 	document.body.addEventListener('scroll', (e) => {
 		let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
 		if (value > 4) return;
 		window.requestAnimationFrame(function () {
 			let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+			if(value > 1) value = 1;
+			name.style.width = 100*value + 'vw';
 			svg.setCurrentTime(value);
-
-			console.log(value);
 		});
 	});
 }
