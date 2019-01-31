@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="paths" viewBox="0 0 100 100">
+	<defs>
+		<rect id="rect" x="40" y="0" opacity="1" width="20" height="17" rx="2" ry="2" transform="rotate(0 50 50)">
+		</rect>
+	</defs>
+	<path d="
+		M50 90
+		A35 35 0 0 0 50 10
+		A35 35 0 0 0 50 90
+		Z
+		M50 70
+		A20 20 0 0 1 50 30
+		A20 20 0 0 1 50 70 
+        Z
+	"/>
+	
+	<use xlink:href="#rect"/>
+	<use xlink:href="#rect" transform="rotate(45 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(90 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(135 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(180 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(225 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(270 50 50)"/>
+	<use xlink:href="#rect" transform="rotate(315 50 50)"/>
+	
+</svg>

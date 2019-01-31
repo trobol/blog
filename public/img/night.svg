@@ -18,7 +18,7 @@
 	">
 		<animate fill="freeze" attributeName="d" dur="1s" end="" restart="always" to="
 			M50 75
-			A10 10 0 0 1 50 25
+			A25 25 0 0 1 50 0
 			A25 25 0 0 1 50 75 
 			Z
 		"/>
