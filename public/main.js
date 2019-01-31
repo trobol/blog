@@ -236,17 +236,18 @@ function getOffset(el) {
 }
 function manageSvg() {
 	let name = document.getElementById("name"),
-	svg = name.contentDocument.getElementById("paths");
+		svg = name.contentDocument.getElementById("paths");
 	svg.pauseAnimations();
-	
+	console.log(svg.clientHeight);
 	document.body.addEventListener('scroll', (e) => {
-		let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+		let value = 1 - (svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
 		if (value > 4) return;
+		if (value < 0) value = 0;
+		if (value > 1) value = 1;
 		window.requestAnimationFrame(function () {
-			let value = 1 - (svg.clientHeight - (window.pageYOffset || document.body.scrollTop) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
-			if(value > 1) value = 1;
-			name.style.width = 100*value + '%';
-			svg.setCurrentTime(value);
+
+			name.style.width = 100 * value + '%';
+			svg.setCurrentTime(value * 100);
 		});
 	});
 }

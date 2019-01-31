@@ -1,205 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="paths" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 604 104">
-    <path d="M51.5 104
-            H31.4 
-            V23.7 
-            H1.3 
-            V3.6 
-            H81.6 
-            V23.7 
-            H51.5
-            Z ">
-        <animate fill="freeze" attributeName="d" dur="1s" end="" restart="always" to="
-                M51.5 104
-                H31.4 
-                V104
-                H0 
-                V84
-                H75.5 
-                V104 
-                H51.5  
-                Z 
-                "/>
-    </path>
-    <path d="M107 104
-            H87.9 
-            V-0.8 
-            H107 
-            V32.3 
-            C113 25 153 23 154.8 61.2
+<svg xmlns="http://www.w3.org/2000/svg" id="paths" fill-opacity="0" stroke="black" stroke-width="5px" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 615 110">
+    <style>
+        path {animation:fade 10s infinite; fill: #4df1cb;} path:nth-child(3) {animation-delay:-8s;} path:nth-child(4) {animation-delay:-7s;} path:nth-child(5) {animation-delay:-6s;} path:nth-child(6) {animation-delay:-5s;} path:nth-child(7) {animation-delay:-4s;} path:nth-child(8) {animation-delay:-3s;} path:nth-child(9) {animation-delay:-2s;} path:nth-child(10) {animation-delay:-1s;} @keyframes fade { 0% {fill: #4df1cb;} 20% {fill: #4186d3;} 40% {fill: #4e2cac;} 60% {fill: #e320a8;} 80% {fill: #ff6c9a;} }
+    </style>
+    <animate fill="freeze" attributeName="stroke-width" dur="100s" restart="always" to="0px"/>
+    <animate fill="freeze" attributeName="fill-opacity" dur="100s" restart="always" to="1"/>
+    <path d="M56.5 104H36.4V23.7H6.3V3.6H86.6V23.7H56.5z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+            M56.5 104
+            H36.4
             V104
-            H135.6 
-            V61.2
-            C135 42 108 42 107 61.2 
-            Z ">
-        <animate fill="freeze" attributeName="d" dur="1s" end="" restart="always" to="
-        M107 104 H75.5 V84 H107 V84 
-        C113 84 153 84 151 84
-        V104 H135.6 V104 
-        C135 104 108 104 107 104 
-        Z 
-       "/>
+            H0
+            V84
+            H80.5V104H56.5z"/>
+    </path>
+    <path d="M112 104H92.9V-0.8H112V32.3C118 25 158 23 159.8 61.2V104H140.6V61.2C140 42 113 42 112 61.2z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="M112 104H80.5V84H112V84C118 84 158 84 156 84V104H140.6V104C140 104 113 104 112 104z"/>
     </path>
     <path d="
-        M205 104
-	    Q169.7 102.4 166.7 65.8
-        Q169.7 29.2 205 26.5
-        Q240.3 29.2 243.3 65.8
-        Q240.3 102.4 205 104
-        Z
-        M205 45.5 
-        Q188.1 47.5 186.1 65.8
-        Q188.1 84.2 205 86.2
-        Q222.1 86.2 224.1 65.8
-        Q222.1 47.5 205 45.5 
-        Z">
-        <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
-        M151 104
-	    Q151 84 151 84
-        Q205 84 205 84
-        Q226.5 84 226.5 84
-        Q226.5 104 226.5 104
-        Z
-        M205 94
-        Q188.1 94 186.1 94
-        Q205 94 205 94
-        Q224.1 94 224.1 94
-        Q205 94 205 94 
-        Z
-        "/>
+    M210 104
+    Q174.7 102.4 171.7 65.8
+    Q174.7 29.2 210 26.5
+    Q245.3 29.2 248.3 65.8
+    Q245.3 102.4 210 104
+    z
+    M210 45.5
+    Q193.1 47.5 191.1 65.8
+    Q193.1 84.2 210 86.2
+    Q227.1 86.2 229.1 65.8
+    Q227.1 47.5 210 45.5
+    z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+        M156 104
+        Q156 84 156 84
+        Q210 84 210 84
+        Q231.5 84 231.5 84
+        Q231.5 104 231.5 104
+        z
+        M210 84
+        Q193.1 84 191.1 84
+        Q193.1 84 210 84
+        Q227.1 84 229.1 84
+        Q227.1 84 210 84
+        z"/>
     </path>
-    <path d="M270.3 104
-         H251.2 
-         V29 
-         H255.9 
-         L262.2 37.9 
-         Q266.8 33.7 272.7 31.5 
-         T284.8 29.2 H301.7 
-         V48.2 H284.8 
-         Q281.8 48.2  
-         279.2 49.3 
-         T274.5 52.4 
-         T271.5 57 
-         T270.3 62.7 
-         V104 Z ">
-         <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
-         M302 104
-         H226.5 
-         V84 
-         H255.9 
-         L262.2 84 
-         Q266.8 84 272.7 84
-         T284.8 84
-        H302 
-         V104
-        H284.8 
-         Q281.8 104 279.2 104
-         T274.5 104 
-         T271.5 104 
-         T270.3 104
-         V104 Z"/>
-         </path>
-    <path d="M329.9 104 
-            H310.8 V29 
-            H315.4 
-            L321.7 36.3 
-            C335.9 25 375.9 23 377.8 61.2
+    <path d="M275.3 104
+            H256.2V29
+            H260.9
+            L267.2 37.9
+            Q271.8 33.7 277.7 31.5T289.8 29.2H306.7V48.2H289.8Q286.8 48.2 284.2 49.3T279.5 52.4T276.5 57T275.3 62.7V104z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+        M275.3 104
+        H231.5
+        V84
+        H260.9
+        L267.2 84
+        Q271.8 84 277.7 84
+        T289.8 84
+        H307
+        V104
+        H289.8
+        Q286.8 104 284.2 104
+        T279.5 104
+        T276.5 104
+        T275.3 104
+        V104
+        z"/>
+    </path>
+    <path d="M334.9 104H315.8V29H320.4L326.7 36.3C340.9 25 380.9 23 382.8 61.2V104H363.7V61.2C362.9 42 335.9 42 334.9 61.2z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="M334.9 104H307V84H320.4L326.7 84C340.9 84 380.9 84 382.8 84V104H363.7V104C362.9 104 335.9 104 334.9 104z"/>
+    </path>
+    <path d="M430.2 104Q402 104 396.7 70.5V48.2H387.3V29.2H396.7V0H415.7V29.2H444.7V48.2H415.7V70.5Q413.7 80.5 430.2 85H444.7V104H430.2z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="M430.2 104Q402 104 396.7 104V104H382.8V84H396.7V84H415.7V84H458V104H415.7V104Q413.7 104 458 104H458V104H458z"/>
+    </path>
+    <path d="
+    M495 104
+    Q534 102 534 65
+    Q534 29 495 26
+    Q459 29 458 65
+    Q459 102 495 104
+    z
+    M495 45
+    Q515 47 515 65
+    Q515 84 495 86
+    Q479 86 477 65
+    Q479 47 495 45
+    z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+            M533.5 104
+            Q533.5 84 533.5 84
+            Q495 84 495 84
+            Q458 84 458 84
+            Q458 104 458 104
+            z
+            M515 84
+            Q515 84 515 84
+            Q515 84 495 84
+            Q495 84 477 84
+            Q495 84 495 84
+            z"/>
+    </path>
+    <path d="M561.3 104H542.2V29H546.8L553.1 36.3C567.2 22 606.3 23 609 61.2V104H590.1V61.2C589.3 42 561.3 42 561.3 61.2z">
+        <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+            M561.3 104
+            H533.5
+            V84
+            H546.8
+            L553.1 84
+            C615 84 609 84 615 84
             V104
-            H358.7
-            V61.2
-            C357.9 42 330.9 42 329.9 61.2 
-            Z">
-        <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
-            M329.9 104 
-            H302
-            V84 
-            H315.4 
-            L321.7 84 
-            C335.9 84 375.9 84 377.8 84
+            H590.1
             V104
-            H358.7
-            V104
-            C357.9 104 330.9 104 329.9 104 
-            Z
-        "/>
-        </path>
-    <path d="M425.2 104
-             Q418.3 104 412.2 101.4 
-             T401.5 94.2 
-             T394.3 83.5 
-             T391.7 70.5 
-             V48.2 
-             H382.3 
-             V29.2 
-             H391.7 
-             V-0.8 H410.7 
-             V29.2 H439.7 
-             V48.2 H410.7 
-             V70.5 
-             Q410.7 73.5 411.8 76.1 
-             T414.9 80.7 
-             T419.5 83.8 
-             T425.2 85 
-             H439.7 
-             V104 
-             H425.2 Z "/>
-    <path d="M529.1 65.8 
-            Q529.1 74.2  526.1 81.5 
-            T517.9 94 
-            T505.8 102.3 
-            T490.8 105.4 
-            Q482.9 105.4  475.9 102.4 
-            T463.8 94.1 
-            T455.5 81.5 
-            T452.5 65.8 
-            Q452.5 57.3 455.5 50 
-            T463.7 37.5 
-            T475.9 29.2 
-            T490.8 26.2 
-            Q498.8 26.2  505.7 29 
-            T517.9 37 
-            T526.1 49.5 
-            T529.1 65.8 Z 
-            M509.8 65.8 
-            Q509.8 61.2  
-            508.3 57.5 
-            T504.2 51.1 
-            T498.2 46.9 
-            T490.8 45.5 
-            Q486.9 45.5 483.4 46.9
-            T477.4 51 
-            T473.3 57.4 
-            T471.9 65.8 
-            Q471.9 70.2 473.3 73.9 
-            T477.3 80.3 
-            T483.4 84.6 
-            T490.8 86.2 
-            Q494.7 86.2 498.1 84.7 
-            T504.2 80.6 
-            T508.3 74.2 
-            T509.8 65.8 
-            Z "/>
-    <path d="M556.3 104
-            H537.2 
-            V29 
-            H541.8
-            L548.1 36.3 
-            Q552.7 32.1  558.5 29.9 
-            T570.8 27.6 
-            Q577.6 27.6 
-            583.7 30.1 
-            T594.4 37.4 
-            T601.5 48.1 
-            T604.2 61.2 
-            V104 
-            H585.1 
-            V61.2 
-            Q585.1 58.2 583.9 55.6 
-            T580.9 51 
-            T576.3 47.9 
-            T570.8 46.8 Q567.8 46.8 565.1 47.9 
-            T560.5 51 
-            T557.4 55.6 
-            T556.3 61.2 
-            V104
-            Z "/>
+            C589.3 104 561.3 104 561.3 104
+            z"/>
+    </path>
 </svg>
