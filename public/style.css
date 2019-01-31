@@ -3,6 +3,7 @@
 #name {
     height: 5.2vh;
     min-width: 30.2vh;
+    margin-top: 2vh;
 }
 
 @keyframes Gradient {
@@ -53,7 +54,7 @@ app-header {
     margin: 0;
     display: block;
     position: sticky;
-    top: -4.2vh;
+    top: -6.2vh;
     text-align: center;
     z-index: 2;
     background: linear-gradient(white 90%, rgba(255,255,255,1));
@@ -61,8 +62,8 @@ app-header {
 app-select {
     transition: 0.15s;
     box-shadow: 0px 0px lightgrey;
-    height: calc(100% - 10px);
-    width: calc(28% + 20px);
+    height: 100%;
+    width: 32%;
     display: inline-block;
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
@@ -278,7 +279,7 @@ canvas {
 @media (max-aspect-ratio: 2/3) {
     
     app-select-background div {
-        font-size: 7vw;
+        font-size: 6vw;
         height: calc(100% - 10px);
         width: calc(100% - 10px);
     }
