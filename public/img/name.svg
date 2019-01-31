@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="paths" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 604 104">
+<svg xmlns="http://www.w3.org/2000/svg" id="paths" fill="none" stroke="black" stroke-width="10px" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 610 110">
     <path d="M51.5 104
             H31.4 
             V23.7 
@@ -32,12 +32,12 @@
             C135 42 108 42 107 61.2 
             Z ">
         <animate fill="freeze" attributeName="d" dur="1s" end="" restart="always" to="
-        M107 104 H75.5 V84 H107 V84 
-        C113 84 153 84 151 84
-        V104 H135.6 V104 
-        C135 104 108 104 107 104 
-        Z 
-       "/>
+            M107 104 H75.5 V84 H107 V84 
+            C113 84 153 84 151 84
+            V104 H135.6 V104 
+            C135 104 108 104 107 104 
+            Z 
+        "/>
     </path>
     <path d="
         M205 104
@@ -52,7 +52,7 @@
         Q222.1 86.2 224.1 65.8
         Q222.1 47.5 205 45.5 
         Z">
-        <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
+        <animate fill="freeze" attributeName="d" begin="0.3s" dur="0.7s" end="" restart="always" to="
         M151 104
 	    Q151 84 151 84
         Q205 84 205 84
@@ -81,7 +81,7 @@
          T271.5 57 
          T270.3 62.7 
          V104 Z ">
-         <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
+        <animate fill="freeze" attributeName="d" begin="0.3s" dur="0.7s" end="" restart="always" to="
          M302 104
          H226.5 
          V84 
@@ -97,7 +97,7 @@
          T271.5 104 
          T270.3 104
          V104 Z"/>
-         </path>
+    </path>
     <path d="M329.9 104 
             H310.8 V29 
             H315.4 
@@ -108,7 +108,7 @@
             V61.2
             C357.9 42 330.9 42 329.9 61.2 
             Z">
-        <animate fill="freeze" attributeName="d" dur="0.7s" begin="0.3s" end="" restart="always" to="
+        <animate fill="freeze" attributeName="d" begin="0.3s" dur="0.7s" end="" restart="always" to="
             M329.9 104 
             H302
             V84 
@@ -121,85 +121,96 @@
             C357.9 104 330.9 104 329.9 104 
             Z
         "/>
-        </path>
-    <path d="M425.2 104
-             Q418.3 104 412.2 101.4 
-             T401.5 94.2 
-             T394.3 83.5 
-             T391.7 70.5 
-             V48.2 
-             H382.3 
-             V29.2 
-             H391.7 
-             V-0.8 H410.7 
-             V29.2 H439.7 
-             V48.2 H410.7 
-             V70.5 
-             Q410.7 73.5 411.8 76.1 
-             T414.9 80.7 
-             T419.5 83.8 
-             T425.2 85 
-             H439.7 
-             V104 
-             H425.2 Z "/>
-    <path d="M529.1 65.8 
-            Q529.1 74.2  526.1 81.5 
-            T517.9 94 
-            T505.8 102.3 
-            T490.8 105.4 
-            Q482.9 105.4  475.9 102.4 
-            T463.8 94.1 
-            T455.5 81.5 
-            T452.5 65.8 
-            Q452.5 57.3 455.5 50 
-            T463.7 37.5 
-            T475.9 29.2 
-            T490.8 26.2 
-            Q498.8 26.2  505.7 29 
-            T517.9 37 
-            T526.1 49.5 
-            T529.1 65.8 Z 
-            M509.8 65.8 
-            Q509.8 61.2  
-            508.3 57.5 
-            T504.2 51.1 
-            T498.2 46.9 
-            T490.8 45.5 
-            Q486.9 45.5 483.4 46.9
-            T477.4 51 
-            T473.3 57.4 
-            T471.9 65.8 
-            Q471.9 70.2 473.3 73.9 
-            T477.3 80.3 
-            T483.4 84.6 
-            T490.8 86.2 
-            Q494.7 86.2 498.1 84.7 
-            T504.2 80.6 
-            T508.3 74.2 
-            T509.8 65.8 
-            Z "/>
-    <path d="M556.3 104
+    </path>
+    <path d="
+            M425.2 104
+            Q397 104 391.7 70.5
+            V48.2 
+            H382.3 
+            V29.2 
+            H391.7 
+            V0 H410.7 
+            V29.2 H439.7 
+            V48.2 H410.7 
+            V70.5 
+            Q408.7 80.5 425.2 85
+            H439.7 
+            V104 
+            H425.2 Z ">
+        <animate fill="freeze" attributeName="d" dur="0.7s" end="" restart="always" to="
+            M425.2 104
+            Q397 104 391.7 104
+            V104 
+            H377.8 
+            V84 
+            H391.7 
+            V84
+            H410.7 
+            V84 
+            H453 
+            V104 
+            H410.7 
+            V104 
+            Q408.7 104 453 104
+            H453 
+            V104 
+            H453 
+            Z 
+        "/>
+    </path>
+    <path d="
+        M490 104
+	    Q529 102 529 65
+        Q529 29 490 26
+        Q454 29 453 65
+        Q454 102 490 104
+        Z
+        M490 45
+        Q510 47 510 65
+        Q510 84 490 86
+        Q474 86 472 65
+        Q474 47 490 45 
+        Z">
+        <animate fill="freeze" attributeName="d" begin="0.3s" dur="0.7s" end="" restart="always" to="
+            M528.5 104
+            Q528.5 84 528.5 84
+            Q490 84 490 84
+            Q453 84 453 84
+            Q453 104 453 104
+            Z
+            M528.5 94
+            Q 528.5 94 528.5 94
+            Q490 94 490 94
+            Q 453 94 453 94
+            Q490 94 490 94 
+            Z
+        "/>
+    </path>
+    <path d="
+            M556.3 104 
             H537.2 
             V29 
-            H541.8
+            H541.8 
             L548.1 36.3 
-            Q552.7 32.1  558.5 29.9 
-            T570.8 27.6 
-            Q577.6 27.6 
-            583.7 30.1 
-            T594.4 37.4 
-            T601.5 48.1 
-            T604.2 61.2 
-            V104 
-            H585.1 
-            V61.2 
-            Q585.1 58.2 583.9 55.6 
-            T580.9 51 
-            T576.3 47.9 
-            T570.8 46.8 Q567.8 46.8 565.1 47.9 
-            T560.5 51 
-            T557.4 55.6 
-            T556.3 61.2 
+            C562.2 22 601.3 23 604 61.2
             V104
-            Z "/>
+            H585.1
+            V61.2
+            C584.3 42 556.3 42 556.3 61.2 
+            Z ">
+        <animate fill="freeze" attributeName="d" begin="0.3s" dur="0.7s" end="" restart="always" to="
+            M556.3 104 
+            H528.5 
+            V84
+            H541.8 
+            L548.1 84 
+            C630 84 630 84 604 104
+            V104
+            H585.1
+            V104
+            C584.3 104 556.3 104 556.3 104
+            Z 
+            604
+        "/>
+    </path>
 </svg>
