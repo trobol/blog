@@ -22,5 +22,31 @@
 	<use xlink:href="#rect" transform="rotate(225 50 50)"/>
 	<use xlink:href="#rect" transform="rotate(270 50 50)"/>
 	<use xlink:href="#rect" transform="rotate(315 50 50)"/>
+	<path fill="none" stroke="red" d="
+		M40 88
+		V99
+		H60
+		V88
+
+		L70 84
+		L77.77 91.77
+		L85.77 84
+
+		
+		L88 60
+		H99
+		V40
+		H88
+
+		L60 12
+		V1
+		H40
+		V12
+		L12 40
+		H1
+		V60
+		H12
+		Z
+	"/>
 	
 </svg>
