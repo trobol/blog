@@ -5,16 +5,37 @@
     min-width: 30.2vh;
     margin-top: 2vh;
 }
-app-settings {
-    position: fixed;
+
+app-settings>svg {
+     position: fixed;
     bottom: 0;
     left: 0;
     display: block;
-    width: 95px;
-    height: 95px;
-    margin: 10px;
-    
-    padding: 10px;
+    width: 13vw;
+    height: 13vw;
+    margin: 5vw;
+    border-radius: 2.5vw;
+    transform: translateZ(0) rotateZ(1deg);
+    transition: 1s;
+    backface-visibility: hidden;
+}
+app-settings.active>svg, app-settings.active>svg {
+    transform: translateZ(0) rotateZ(90deg);
+}
+app-settings-menu {
+    width: 40vw;
+    display: block;
+    height: 60vh;
+    left: -40vh;
+    bottom: 18vw;
+    position: fixed;
+    transition: 1s;
+    border-radius: 10px;
+    background: white;
+    margin: 0 0 5vw 0;
+}
+.active app-settings-menu {
+    left: 5vw;
 }
 @keyframes Gradient {
 	0% {
@@ -59,7 +80,7 @@ app-menu {
     text-align: center;
 }
 app-header {
-    transition: 0.5s;
+    transition:0.5s,  background 1s;
     width: 100%;
     margin: 0;
     display: block;
@@ -67,7 +88,7 @@ app-header {
     top: -6.2vh;
     text-align: center;
     z-index: 2;
-    background: linear-gradient(white 90%, rgba(255,255,255,1));
+    background: white;
 } 
 app-select {
     transition: 0.15s;
@@ -90,6 +111,7 @@ app-select:active {
 }
 
 app-select-background div {
+    transition: border-color 1s, background 1s;
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
@@ -97,13 +119,15 @@ app-select-background div {
     height: 4vw;
     padding: 5px;
     width: 100%;
-    color: white;  /* Fallback: assume this color ON TOP of image */
+
     text-align: center;
     font-family: 'Righteous', cursive;
     cursor: context-menu;
     -webkit-text-fill-color: white;
     -webkit-text-stroke: 0.3vw black;
     -webkit-background-clip: text;
+}
+app-select-background div, app-settings svg {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -125,6 +149,7 @@ app-select-background {
     background: white;
     height: calc(100% - 10px);
     width: calc(100% - 10px);
+    transition: border-color 1s, background 1s;
 }
 app-select:hover app-select-background {
     margin: 5px;
@@ -192,7 +217,7 @@ app-post-header {
     border: 1px solid black;
     background: white;
     margin: 0 10%;
-    transition: 0.3s;
+    transition: 0.3s, border-color 1s, background 1s;
     position: relative;
 }
 app-post-header:before {
@@ -284,6 +309,7 @@ canvas {
     z-index: -3;
     position: fixed;
     top: 0;
+    transition: background 1s;
 }
 /* Mobile */
 @media (max-aspect-ratio: 2/3) {
@@ -294,7 +320,7 @@ canvas {
         width: calc(100% - 10px);
     }
     app-select {
-        height: 13vw;
+        height: 11vw;
     }
     app-content {
         width: 100%;
@@ -324,7 +350,27 @@ canvas {
         margin: 0 10px;
     }
 }
+@keyframes fade{
+    0%{fill:#4df1cb}
+    20%{fill:#4186d3}
+    40%{fill:#4e2cac}
+    60%{fill:#e320a8}
+    80%{fill:#ff6c9a}
+}
+path#name {
+    animation:fade 10s infinite;
+    fill:#4df1cb
+}
+path#name:nth-child(3){animation-delay:-8s}
+path#name:nth-child(4){animation-delay:-7s}
+path#name:nth-child(5){animation-delay:-6s}
+path#name:nth-child(6){animation-delay:-5s}
+path#name:nth-child(7){animation-delay:-4s}
+path#name:nth-child(8){animation-delay:-3s}
+path#name:nth-child(9){animation-delay:-2s}
+path#name:nth-child(10){animation-delay:-1s}
 
+.dark path {stroke:#b3b3b3; transition:stroke 1s;} 
 /* MENU STATE */
 
 [state=menu] app-header {
@@ -335,3 +381,35 @@ h1 {
     font-size: 8vw;
 }
 
+.dark, .dark app-post-info p {
+    transition: color 1s;
+   color:white;
+}
+.dark app-header {
+   
+    background: rgb(37, 37, 37);
+}
+
+.dark app-select-background div {
+    transition: -webkit-text-stroke 1s, -webkit-text-fill-color 1s;
+    -webkit-text-stroke: 0;
+}
+.dark app-select-background div:hover {
+ 
+}
+.dark canvas {
+    background: rgb(37, 37, 37);
+}
+.dark app-select-background {
+    
+    border-color: rgb(37, 37, 37);
+    background: rgb(37, 37, 37);
+}
+
+.dark app-settings>svg {
+    stroke: #b3b3b3;
+}
+.dark app-post-header {
+    
+    background: rgb(37, 37, 37);
+}

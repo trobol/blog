@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="name" fill-opacity="0" stroke="black" stroke-width="5px" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 615 110">
+        <animate fill="freeze" attributeName="stroke-width" dur="100s" restart="always" to="0px"/>
+        <animate fill="freeze" attributeName="fill-opacity" dur="100s" restart="always" to="1"/>
+        <path d="M56.5 104H36.4V23.7H6.3V3.6H86.6V23.7H56.5z">
+            <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="
+				M56.5 104
+				H36.4
+				V104
+				H0
+				V84
+				H80.5V104H56.5z"/>
+        </path>
+        <path d="M112 104H92.9V-0.8H112V32.3C118 25 158 23 159.8 61.2V104H140.6V61.2C140 42 113 42 112 61.2z">
+            <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="M112 104H80.5V84H112V84C118 84 158 84 156 84V104H140.6V104C140 104 113 104 112 104z"/>
+        </path>
+        <path d="
+		M210 104
+		Q174.7 102.4 171.7 65.8
+		Q174.7 29.2 210 26.5
+		Q245.3 29.2 248.3 65.8
+		Q245.3 102.4 210 104
+		z
+		M210 45.5
+		Q193.1 47.5 191.1 65.8
+		Q193.1 84.2 210 86.2
+		Q227.1 86.2 229.1 65.8
+		Q227.1 47.5 210 45.5
+		z">
+            <animate fill="freeze" attributeName="d" begin="20s" dur="60s" end="" restart="always" to="
+			M156 104
+			Q156 84 156 84
+			Q210 84 210 84
+			Q231.5 84 231.5 84
+			Q231.5 104 231.5 104
+			z
+			M210 84
+			Q193.1 84 191.1 84
+			Q193.1 84 210 84
+			Q227.1 84 229.1 84
+			Q227.1 84 210 84
+			z"/>
+        </path>
+        <path d="M275.3 104
+				H256.2V29
+				H260.9
+				L267.2 37.9
+				Q271.8 33.7 277.7 31.5T289.8 29.2H306.7V48.2H289.8Q286.8 48.2 284.2 49.3T279.5 52.4T276.5 57T275.3 62.7V104z">
+            <animate fill="freeze" attributeName="d" begin="20s" dur="60s" end="" restart="always" to="
+			M275.3 104
+			H231.5
+			V84
+			H260.9
+			L267.2 84
+			Q271.8 84 277.7 84
+			T289.8 84
+			H307
+			V104
+			H289.8
+			Q286.8 104 284.2 104
+			T279.5 104
+			T276.5 104
+			T275.3 104
+			V104
+			z"/>
+        </path>
+        <path d="M334.9 104H315.8V29H320.4L326.7 36.3C340.9 25 380.9 23 382.8 61.2V104H363.7V61.2C362.9 42 335.9 42 334.9 61.2z">
+            <animate fill="freeze" attributeName="d" begin="20s" dur="60s" end="" restart="always" to="M334.9 104H307V84H320.4L326.7 84C340.9 84 380.9 84 382.8 84V104H363.7V104C362.9 104 335.9 104 334.9 104z"/>
+        </path>
+        <path d="M430.2 104Q402 104 396.7 70.5V48.2H387.3V29.2H396.7V0H415.7V29.2H444.7V48.2H415.7V70.5Q413.7 80.5 430.2 85H444.7V104H430.2z">
+            <animate fill="freeze" attributeName="d" dur="80s" end="" restart="always" to="M430.2 104Q402 104 396.7 104V104H382.8V84H396.7V84H415.7V84H458V104H415.7V104Q413.7 104 458 104H458V104H458z"/>
+        </path>
+        <path d="
+		M495 104
+		Q534 102 534 65
+		Q534 29 495 26
+		Q459 29 458 65
+		Q459 102 495 104
+		z
+		M495 45
+		Q515 47 515 65
+		Q515 84 495 86
+		Q479 86 477 65
+		Q479 47 495 45
+		z">
+            <animate fill="freeze" attributeName="d" begin="20s" dur="60s" end="" restart="always" to="
+				M533.5 104
+				Q533.5 84 533.5 84
+				Q495 84 495 84
+				Q458 84 458 84
+				Q458 104 458 104
+				z
+				M515 84
+				Q515 84 515 84
+				Q515 84 495 84
+				Q495 84 477 84
+				Q495 84 495 84
+				z"/>
+        </path>
+        <path d="M561.3 104H542.2V29H546.8L553.1 36.3C567.2 22 606.3 23 609 61.2V104H590.1V61.2C589.3 42 561.3 42 561.3 61.2z">
+            <animate fill="freeze" attributeName="d" begin="20s" dur="60s" end="" restart="always" to="
+				M561.3 104
+				H533.5
+				V84
+				H546.8
+				L553.1 84
+				C615 84 609 84 615 84
+				V104
+				H590.1
+				V104
+				C589.3 104 561.3 104 561.3 104
+				z"/>
+        </path>
+    </symbol>
+</svg>

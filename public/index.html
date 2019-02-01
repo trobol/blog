@@ -10,16 +10,17 @@
     <meta name="Description" content="Author: Thornton Fernbacher">
     <title>Thornton</title>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    
+
     <script type="text/javascript">
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/serviceworker.js')
-            .then(function (reg) {
-                console.log('Service Worker registration succeeded.');
-            }).catch(function (error) {
-                console.log('Service Worker registration failed with ' + error);
-            });
-            
+                .then(function (reg) {
+                    console.log('Service Worker registration succeeded.');
+                }).catch(function (error) {
+                    console.log('Service Worker registration failed with ' + error);
+                });
+
             let deferredPrompt;
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -28,17 +29,28 @@
                 deferredPrompt = e;
             });
         }
+
     </script>
     <script src="main.js"></script>
     <link rel="preload" as="font" href="/fonts/righteous-v6-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
 </head>
 
-<body>  
+<body>
+    <svg href="img/icons.svg">
+        <use xlink:href="img/icons.svg#name"></use>
+    </svg>
     <app-header>
-        
+        <script type="text/javascript"> if (localStorage.getItem('mode') == 'dark') {
+                document.body.classList.add('dark');
+                //document.getElementById('').classList.add('dark');
+            }
+        </script>
         <object id="name" data="img/name.svg" type="image/svg+xml">
-          Thornton  
+            Thornton
         </object>
+        <svg class="icon">
+            <use xlink:href="#name" />
+        </svg>
         <app-menu>
             <app-select class="info">
                 <app-select-background>
@@ -60,19 +72,50 @@
     <canvas id="canvas"></canvas>
     <app-content>
         <app-panel class="info">
-            
+
         </app-panel>
         <app-panel class="projects">
-            
+
         </app-panel>
         <app-panel class="blog">
-            
+
         </app-panel>
     </app-content>
     <app-settings>
-        <object data="img/gear.svg" type="image/svg+xml">
-          Thornton  
-        </object>
+        <app-settings-menu>
+            <app-settings-menu-option>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="paths" viewBox="0 0 100 100">
+                    <defs>
+                        <rect id="rect" width="10" height="17" x="45" y="0" class="light" opacity="1" rx="2" ry="2"
+                            transform="rotate(0 50 50)" />
+                    </defs>
+                    <path fill="white" d="
+        		M70 65
+        		A8 10.4 45 0 1 40 27
+        		Q40 65 70 65 
+                Z
+        	" />
+                    <path d="
+        		M50 75
+        		A25 25 0 0 1 50 25
+        		A25 25 0 0 1 50 75 
+                Z
+        	"
+                        class="light" />
+                    <use xlink:href="#rect" />
+                    <use transform="rotate(45 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(90 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(135 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(180 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(225 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(270 50 50)" xlink:href="#rect" />
+                    <use transform="rotate(315 50 50)" xlink:href="#rect" />
+                </svg>
+            </app-settings-menu-option>
+        </app-settings-menu>
+        <svg id="gear" fill="none" draggable="false" xmlns="http://www.w3.org/2000/svg" stroke="black" viewBox="0 0 104 104">
+            <path pointer-events="none" stroke-width="5" d="M42 90V101H62V90L72 86L80 94L94 80L86 72L90 62H101V42H90L86 32L94 24L80 10L72 18L62 14V3H42V14L32 18L24 10L11 24L18 32L14 42H3V62H14L18 72L11 80L24 94T32 86zM52 72A20 20 0 0 1 52 32A20 20 0 0 1 52 72z" />
+        </svg>
     </app-settings>
 </body>
 

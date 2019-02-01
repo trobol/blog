@@ -1,35 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="paths" viewBox="0 0 100 100">
-	<defs>
-		<rect id="rect" x="45" y="0" opacity="1" width="10" height="17" rx="2" ry="2" transform="rotate(0 50 50)">
-			<animateTransform attributeName="transform"
-                          attributeType="XML"
-                          type="rotate"
-                          to="90 50 50"
-                          dur="1s"
-                          repeatCount="indefinite"/>
-			<animate fill="freeze" attributeName="opacity" dur="1s" end="" to="0"/>
-		</rect>
-	</defs>
-	<path d="
+    <defs>
+        <rect id="rect" width="10" height="17" x="45" y="0" class="light" opacity="1" rx="2" ry="2" transform="rotate(0 50 50)"/>
+    </defs>
+    <path fill="black" d="
+		M70 65
+		A8 10.4 45 0 1 40 27
+		Q40 65 70 65 
+        Z
+	"/>
+    <path d="
 		M50 75
 		A25 25 0 0 1 50 25
 		A25 25 0 0 1 50 75 
         Z
-	">
-		<animate fill="freeze" attributeName="d" dur="1s" end="" restart="always" to="
-			M50 75
-			A25 25 0 0 1 50 0
-			A25 25 0 0 1 50 75 
-			Z
-		"/>
-	</path>
-	<use xlink:href="#rect"/>
-	<use xlink:href="#rect" transform="rotate(45 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(90 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(135 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(180 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(225 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(270 50 50)"/>
-	<use xlink:href="#rect" transform="rotate(315 50 50)"/>
-	
+	" class="light"/>
+    <use xlink:href="#rect"/>
+    <use transform="rotate(45 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(90 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(135 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(180 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(225 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(270 50 50)" xlink:href="#rect"/>
+    <use transform="rotate(315 50 50)" xlink:href="#rect"/>
 </svg>

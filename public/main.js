@@ -116,7 +116,7 @@ let app = {
 				let parent = this.parentElement,
 					active = parent.classList.contains('active');
 
-				for (let e of document.getElementsByClassName('active')) {
+				for (let e of parent.parentElement.getElementsByClassName('active')) {
 					e.classList.remove('active');
 				}
 				if (!active) {
@@ -135,6 +135,19 @@ let app = {
 
 						this.setAttribute('loaded', true);
 					});
+				}
+
+			},
+			'app-settings': function (event) {
+				if (!event.currentTarget.classList.contains('active')) {
+					document.body.classList.add('dark');
+					app.svg.classList.add('dark');
+					event.currentTarget.classList.add('active');
+					localStorage.setItem('mode', 'dark')
+				} else {
+					localStorage.setItem('mode', 'light');
+					event.currentTarget.classList.remove('active');
+					document.body.classList.remove('dark');
 				}
 
 			}
@@ -235,19 +248,18 @@ function getOffset(el) {
 	return { top: _y, left: _x };
 }
 function manageSvg() {
-	let name = document.getElementById("name"),
-		svg = name.contentDocument.getElementById("paths");
-	svg.pauseAnimations();
-	console.log(svg.clientHeight);
+	let name = document.getElementById("name");
+	app.svg = name.contentDocument.getElementById("paths");
+	app.svg.pauseAnimations();
 	document.body.addEventListener('scroll', (e) => {
-		let value = 1 - (svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+		let value = 1 - (app.svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / app.svg.clientHeight;
 		if (value > 4) return;
 		if (value < 0) value = 0;
 		if (value > 1) value = 1;
 		window.requestAnimationFrame(function () {
 
 			name.style.width = 100 * value + '%';
-			svg.setCurrentTime(value * 100);
+			app.svg.setCurrentTime(value * 100);
 		});
 	});
 }
