@@ -370,7 +370,6 @@ path#name:nth-child(8){animation-delay:-3s}
 path#name:nth-child(9){animation-delay:-2s}
 path#name:nth-child(10){animation-delay:-1s}
 
-.dark path {stroke:#b3b3b3; transition:stroke 1s;} 
 /* MENU STATE */
 
 [state=menu] app-header {
@@ -406,9 +405,6 @@ h1 {
     background: rgb(37, 37, 37);
 }
 
-.dark app-settings>svg {
-    stroke: #b3b3b3;
-}
 .dark app-post-header {
     
     background: rgb(37, 37, 37);

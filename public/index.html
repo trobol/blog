@@ -36,21 +36,19 @@
 </head>
 
 <body>
-    <svg href="img/icons.svg">
-        <use xlink:href="img/icons.svg#name"></use>
-    </svg>
     <app-header>
-        <script type="text/javascript"> if (localStorage.getItem('mode') == 'dark') {
-                document.body.classList.add('dark');
-                //document.getElementById('').classList.add('dark');
-            }
-        </script>
         <object id="name" data="img/name.svg" type="image/svg+xml">
             Thornton
         </object>
-        <svg class="icon">
-            <use xlink:href="#name" />
-        </svg>
+        <script type="text/javascript"> if (localStorage.getItem('mode') == 'dark') {
+                document.body.classList.add('dark');
+                let name = document.getElementById("name");
+                name.onload = () => {
+                    name.contentDocument.getElementById("paths").classList.add('dark');
+                }
+            }
+        </script>
+
         <app-menu>
             <app-select class="info">
                 <app-select-background>

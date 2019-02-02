@@ -148,6 +148,7 @@ let app = {
 					localStorage.setItem('mode', 'light');
 					event.currentTarget.classList.remove('active');
 					document.body.classList.remove('dark');
+					app.svg.classList.remove('dark');
 				}
 
 			}

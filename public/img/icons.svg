@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg">
-    <symbol id="name" fill-opacity="0" stroke="black" stroke-width="5px" preserveAspectRatio="none" shape-rendering="geometricPrecision" viewBox="0 0 615 110">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="name">
         <animate fill="freeze" attributeName="stroke-width" dur="100s" restart="always" to="0px"/>
         <animate fill="freeze" attributeName="fill-opacity" dur="100s" restart="always" to="1"/>
         <path d="M56.5 104H36.4V23.7H6.3V3.6H86.6V23.7H56.5z">
@@ -111,5 +111,5 @@
 				C589.3 104 561.3 104 561.3 104
 				z"/>
         </path>
-    </symbol>
+    </g>
 </svg>
