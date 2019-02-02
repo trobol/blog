@@ -140,17 +140,21 @@ let app = {
 			},
 			'app-settings': function (event) {
 				if (!event.currentTarget.classList.contains('active')) {
+					event.currentTarget.classList.add('active');
+				} else {
+					event.currentTarget.classList.remove('active');
+				}
+			},
+			'app-settings-menu-option': function (event) {
+				if (!document.body.classList.contains('dark')) {
 					document.body.classList.add('dark');
 					app.svg.classList.add('dark');
-					event.currentTarget.classList.add('active');
 					localStorage.setItem('mode', 'dark')
 				} else {
 					localStorage.setItem('mode', 'light');
-					event.currentTarget.classList.remove('active');
 					document.body.classList.remove('dark');
 					app.svg.classList.remove('dark');
 				}
-
 			}
 		},
 		touchstart: {

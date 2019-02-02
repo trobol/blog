@@ -37,6 +37,15 @@ app-settings-menu {
 .active app-settings-menu {
     left: 5vw;
 }
+app-settings-menu-option {
+    display: block;
+    height: 15%;
+    padding: 5%;
+    border-bottom: 1px solid black;
+}
+app-settings-menu-option svg {
+    height: 100%;
+}
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%
