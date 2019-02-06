@@ -1,65 +1,59 @@
 
-let canvas, ctx,
-	up = { x: 0, y: -1 },
-	bottom = { x: 0, y: 50 },
-	colors = [
-		'#4e2cac',
-		'#4186d3',
-		'#4cf1cc',
-		'#ff6c9a',
-		'#e320a8',
-		'#4df1cb'
-	],
-	bubbles = [];
-function Bubble(x, y, size, color, speed) {
-	this.x = x;
-	this.y = y;
-	this.size = size;
-	this.color = color;
-	this.speed = speed;
-}
-Bubble.prototype.move = function () {
-	this.x += this.speed * up.x;
-	this.y += this.speed * up.y;
-}
-Bubble.add = () => {
-	let size = Math.random() * 15 + 5,
-		x = Math.random() * app.canvas.width,
-		speed = (Math.random() + 0.5) / 2,
-		color = Math.floor(Math.random() * 5);
-	bubbles.push(new Bubble(x, app.canvas.height + size, size, colors[color], speed));
-	if (bubbles.length > 25) {
-		bubbles.shift();
+const app = (function () {
+	let canvas, ctx,
+		up = { x: 0, y: -1 },
+		bottom = { x: 0, y: 50 },
+		colors = [
+			'#4e2cac',
+			'#4186d3',
+			'#4cf1cc',
+			'#ff6c9a',
+			'#e320a8',
+			'#4df1cb'
+		],
+		bubbles = [];
+	function Bubble(x, y, size, color, speed) {
+		this.x = x;
+		this.y = y;
+		this.size = size;
+		this.color = color;
+		this.speed = speed;
 	}
-};
-Bubble.draw = () => {
-	app.ctx.clearRect(0, 0, app.canvas.width, app.canvas.height);
-	bubbles.forEach(bubble => {
-		bubble.move();
-		app.ctx.beginPath();
-		app.ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2 * Math.PI);
-		app.ctx.fillStyle = bubble.color;
-		app.ctx.fill();
-	});
-	if (Math.random() < 0.03) {
-		Bubble.add();
+	Bubble.prototype.move = function () {
+		this.x += this.speed * up.x;
+		this.y += this.speed * up.y;
 	}
-	window.requestAnimationFrame(Bubble.draw);
-}
+	Bubble.add = () => {
+		let size = Math.random() * 15 + 5,
+			x = Math.random() * canvas.width,
+			speed = (Math.random() + 0.5) / 2,
+			color = Math.floor(Math.random() * 5);
+		bubbles.push(new Bubble(x, canvas.height + size, size, colors[color], speed));
+		if (bubbles.length > 25) {
+			bubbles.shift();
+		}
+	};
+	Bubble.draw = () => {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		bubbles.forEach(bubble => {
+			bubble.move();
+			ctx.beginPath();
+			ctx.arc(bubble.x, bubble.y, bubble.size, 0, 2 * Math.PI);
+			ctx.fillStyle = bubble.color;
+			ctx.fill();
+		});
+		if (Math.random() < 0.03) {
+			Bubble.add();
+		}
+		window.requestAnimationFrame(Bubble.draw);
+	}
 
-window.addEventListener('resize', function (evt) {
-	app.canvas.width = window.innerWidth;
-	app.canvas.height = window.innerHeight;
-});
-
-
-let app = {
-	load: function (url) {
+	function load(url) {
 		return fetch(url)
 			.then(function (response) {
 				let content_type = response.headers.get('Content-Type');
 				content_type = content_type.slice(0, content_type.indexOf(';'));
-				let handler = app.loadHandlers[content_type];
+				let handler = loadHandlers[content_type];
 				console.log(content_type);
 				if (handler) {
 					return new Promise((resolve, reject) => {
@@ -69,125 +63,117 @@ let app = {
 					return response;
 				}
 			});
-	},
-	loadHandlers: {
-		'application/json': (response) => {
-			return response.json();
-		},
-		'text/html': function (response) {
-			return response.text();
-		}
-	},
-	state: 'start',
-	setState: function (state) {
-		if (state != this.state) {
-			app.container.setAttribute('state', state);
-			this.state = state;
-		}
-	},
-	menu: 'none',
-	setMenu: function (menu) {
-		if (app.menu != menu) {
-			app.container.setAttribute('menu', menu);
-			this.menu = menu;
-		}
-	},
-	listeners: {
-		mousedown: {
-			'app-select.blog': function (event) {
-				app.setState('menu');
-				app.setMenu('blog');
+	}
+
+	let state = 'start',
+		menu = 'none',
+		loadHandlers = {
+			'application/json': (response) => {
+				return response.json();
 			},
-			'app-select.info': function (event) {
-				app.setState('menu');
-				app.setMenu('info');
-			},
-			'app-select.projects': function (event) {
-				app.setState('menu');
-				app.setMenu('projects');
-			},
-			'h1': function (element) {
-				index = (index + 1) % 7;
-				name.style.fontFamily = fonts[index];
+			'text/html': function (response) {
+				return response.text();
 			}
 		},
-		click: {
-			'app-post-header': function (event) {
-				let parent = this.parentElement,
-					active = parent.classList.contains('active');
-
-				for (let e of parent.parentElement.getElementsByClassName('active')) {
-					e.classList.remove('active');
-				}
-				if (!active) {
-					window.scrollTo({
-						top: parent.offset,
-						left: 0,
-						behavior: 'smooth'
-					});
-					parent.classList.add('active');
-				}
-				if (this.hasAttribute("loaded")) {
-
-				} else {
-					app.load('/posts/' + parent.getAttribute('app-post-path') + '/index.html').then((data) => {
-						parent.querySelector('app-post-content').innerHTML = data;
-
-						this.setAttribute('loaded', true);
-					});
-				}
-
-			},
-			'app-settings': function (event) {
-				if (!event.currentTarget.classList.contains('active')) {
-					event.currentTarget.classList.add('active');
-				} else {
-					event.currentTarget.classList.remove('active');
+		listeners = {
+			mousedown: {
+				'app-select.blog': function (event) {
+					history.replaceState({}, 'posts', 'posts');
+					router();
+				},
+				'app-select.info': function (event) {
+					history.replaceState({}, 'info', 'info');
+					router();
+				},
+				'app-select.projects': function (event) {
+					history.replaceState({}, 'projects', 'projects');
+					router();
+				},
+				'h1': function (element) {
+					index = (index + 1) % 7;
+					name.style.fontFamily = fonts[index];
 				}
 			},
-			'app-settings-menu-option': function (event) {
-				if (!document.body.classList.contains('dark')) {
-					document.body.classList.add('dark');
-					app.svg.classList.add('dark');
-					localStorage.setItem('mode', 'dark')
-				} else {
-					localStorage.setItem('mode', 'light');
-					document.body.classList.remove('dark');
-					app.svg.classList.remove('dark');
+			click: {
+				'app-post-header': function (event) {
+					let parent = this.parentElement,
+						active = parent.classList.contains('active');
+
+					for (let e of parent.parentElement.getElementsByClassName('active')) {
+						e.classList.remove('active');
+					}
+					if (!active) {
+						window.scrollTo({
+							top: parent.offset,
+							left: 0,
+							behavior: 'smooth'
+						});
+						parent.classList.add('active');
+					}
+					if (this.hasAttribute("loaded")) {
+
+					} else {
+						load('/posts/' + parent.getAttribute('app-post-path') + '/index.html').then((data) => {
+							parent.querySelector('app-post-content').innerHTML = data;
+
+							this.setAttribute('loaded', true);
+						});
+					}
+
+				},
+				'app-settings': function (event) {
+					if (!event.currentTarget.classList.contains('active')) {
+						event.currentTarget.classList.add('active');
+					} else {
+						event.currentTarget.classList.remove('active');
+					}
+				},
+				'app-settings-menu-option': function (event) {
+					if (!document.body.classList.contains('dark')) {
+						document.body.classList.add('dark');
+						svg.classList.add('dark');
+						localStorage.setItem('mode', 'dark')
+					} else {
+						localStorage.setItem('mode', 'light');
+						document.body.classList.remove('dark');
+						svg.classList.remove('dark');
+					}
 				}
+			},
+			touchstart: {
+				'app-select.blog': function (event) {
+					setState('menu');
+
+					setMenu('blog');
+				},
+				'app-select.info': function (event) {
+					setState('menu');
+					setMenu('info');
+				},
+				'app-select.projects': function (event) {
+					setState('menu');
+					setMenu('projects');
+				}
+			},
+			dblclick: {
 			}
-		},
-		touchstart: {
-			'app-select.blog': function (event) {
-				app.setState('menu');
-				app.setMenu('blog');
-			},
-			'app-select.info': function (event) {
-				app.setState('menu');
-				app.setMenu('info');
-			},
-			'app-select.projects': function (event) {
-				app.setState('menu');
-				app.setMenu('projects');
-			}
-		},
-		dblclick: {
+
 		}
 
-	},
-	registerListeners: function () {
-		for (let l in app.listeners) {
-			let listeners = app.listeners[l];
-			for (let e in listeners) {
+	function registerListeners() {
+		for (let l in listeners) {
+			let listenerType = listeners[l];
+			for (let e in listenerType) {
 				document.querySelectorAll(e).forEach(function (k) {
-					k.addEventListener(l, listeners[e], { passive: true, capture: false });
+					k.addEventListener(l, listenerType[e], { passive: true, capture: false });
 				});
 			}
 
 		}
+	}
 
-	},
-	appendPosts: (data) => {
+
+	function appendPosts(data) {
 		let blogPanel = document.querySelector('app-panel.blog');
 		for (let i of data) {
 
@@ -214,58 +200,92 @@ let app = {
 
 			blogPanel.insertAdjacentHTML('beforeend', post);
 		}
-		app.registerListeners();
+		registerListeners();
 		let posts = document.getElementsByTagName('app-post');
 		for (let p of posts) {
-			p.offset = getOffset(p).top - app.header.offsetHeight
+			p.offset = getOffset(p).top - header.offsetHeight
 		}
-	},
-	onload: function () {
+	}
+
+	function onload() {
 		manageSvg();
-		app.canvas = document.getElementById("canvas");
-		app.ctx = app.canvas.getContext('2d');
-		app.canvas.width = window.innerWidth;
-		app.canvas.height = window.innerHeight;
+		canvas = document.getElementById("canvas");
+		ctx = canvas.getContext('2d');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 
 		window.requestAnimationFrame(Bubble.draw);
-		app.container = document.body;
-		app.header = document.getElementsByTagName('app-header')[0];
+		container = document.body;
+		header = document.getElementsByTagName('app-header')[0];
 
-		app.load('/posts.json').then(app.appendPosts);
-		app.registerListeners();
-		let path = window.location.pathname;
+		load('/posts.json').then(appendPosts);
+		registerListeners();
+		router();
+		console.log("loaded");
+
+	}
+	function getOffset(el) {
+		var _x = 0;
+		var _y = 0;
+		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+			_x += el.offsetLeft - el.scrollLeft;
+			_y += el.offsetTop - el.scrollTop;
+			el = el.offsetParent;
+		}
+		return { top: _y, left: _x };
+	}
+	function manageSvg() {
+		let name = document.getElementById("name");
+		svg = name.contentDocument.getElementById("paths");
+		svg.pauseAnimations();
+		document.body.addEventListener('scroll', (e) => {
+			let value = 1 - (svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+			if (value > 4) return;
+			if (value < 0) value = 0;
+			if (value > 1) value = 1;
+			window.requestAnimationFrame(function () {
+
+				name.style.width = 100 * value + '%';
+				svg.setCurrentTime(value * 100);
+			});
+		});
+	}
+	function setState(s) {
+		if (s != state) {
+			container.setAttribute('state', s);
+			state = s;
+		}
+	}
+	function setMenu(m) {
+		if (m != menu) {
+			container.setAttribute('menu', m);
+
+			menu = m;
+
+		}
+	}
+	function router() {
+		let path = decodeURI(window.location.pathname);
 		if (path !== '/') {
 			path = path.split('/');
 			console.log(path);
+			let menuitems = { 'info': 1, 'projects': 1, 'posts': 1 }
+			if (menuitems[path[1]]) {
+				setState('menu');
+				setMenu(path[1]);
+			}
 		}
-
-
 	}
-}
-function getOffset(el) {
-	var _x = 0;
-	var _y = 0;
-	while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-		_x += el.offsetLeft - el.scrollLeft;
-		_y += el.offsetTop - el.scrollTop;
-		el = el.offsetParent;
-	}
-	return { top: _y, left: _x };
-}
-function manageSvg() {
-	let name = document.getElementById("name");
-	app.svg = name.contentDocument.getElementById("paths");
-	app.svg.pauseAnimations();
-	document.body.addEventListener('scroll', (e) => {
-		let value = 1 - (app.svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / app.svg.clientHeight;
-		if (value > 4) return;
-		if (value < 0) value = 0;
-		if (value > 1) value = 1;
-		window.requestAnimationFrame(function () {
+	window.onpopstate = function (e) {
+		router();
+	};
 
-			name.style.width = 100 * value + '%';
-			app.svg.setCurrentTime(value * 100);
-		});
+	window.addEventListener('resize', function (evt) {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 	});
-}
+
+	return { onload }
+})();
 window.onload = app.onload;
+

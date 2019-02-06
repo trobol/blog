@@ -185,7 +185,7 @@ app-content {
 [menu=projects] app-content {
     left:-100vw;
 }
-[menu=blog] app-content {
+[menu=posts] app-content {
     left: -200vw
 }
 app-panel.info {
