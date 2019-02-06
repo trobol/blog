@@ -64,7 +64,7 @@ const app = (function () {
 				}
 			});
 	}
-	
+
 	let state = 'start',
 		menu = 'none',
 		loadHandlers = {
@@ -159,61 +159,92 @@ const app = (function () {
 
 		}
 	}
-
-
+	let posts = {};
 	function appendPosts(data) {
 		let blogPanel = document.querySelector('app-panel.blog');
 		for (let i of data) {
-
-			let color = colors[i.id % colors.length],
-				months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
-				post =
-					`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1"><a class="post-header" href="/posts/${i.url}"}><app-post-date><app-post-day>${i.day}</app-post-day><app-post-month>${months[i.month]}</app-post-month></app-post-date><app-post-info><app-post-title>${i.title}</app-post-title><p>${i.description}</p></app-post-info></a><app-post-content><img src="img/spinner.svg" alt="loading"></app-post-content></app-post>`;
-
-			blogPanel.insertAdjacentHTML('beforeend', post);
-
+			let post = buildPost(i);
+			blogPanel.append(post);
+			i.element = post;
+			i.offset = getOffset(post).top - header.offsetHeight
+			posts[i.url] = i;
 		}
 		registerListeners();
-		for(let e of blogPanel.getElementsByTagName('a')) {
-			e.onclick = function (event) {
-				history.replaceState({}, 'Thornton', e.href);
-				router();
-				return false;
-			};
-			
+
+	}
+	function showPost(element) {
+
+		let parent = element.tagName == "APP-POST" ? element : element.parentElement,
+			active = parent.classList.contains('active');
+
+		for (let e of parent.parentElement.getElementsByClassName('active')) {
+			e.classList.remove('active');
 		}
-		let posts = document.getElementsByTagName('app-post');
-		for (let p of posts) {
-			p.offset = getOffset(p).top - header.offsetHeight
+		if (!active) {
+			window.scrollTo({
+				top: parent.offset,
+				left: 0,
+				behavior: 'smooth'
+			});
+			parent.classList.add('active');
+			history.replaceState({}, 'Thornton', element.href);
+		}
+		if (element.hasAttribute("loaded")) {
+
+		} else {
+			load('/posts/' + parent.getAttribute('app-post-path') + '/index.html').then((data) => {
+				parent.querySelector('app-post-content').innerHTML = data;
+
+				element.setAttribute('loaded', true);
+			});
 		}
 	}
 
+	function buildPost(i) {
+		let color = colors[i.id % colors.length],
+			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+			a = htmlToElement(`<a class="post-header" href="/posts/${i.url}"}><app-post-date><app-post-day>${i.day}</app-post-day><app-post-month>${months[i.month]}</app-post-month></app-post-date><app-post-info><app-post-title>${i.title}</app-post-title><p>${i.description}</p></app-post-info></a>`),
+			element = htmlToElement(`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1"><app-post-content><img src="/img/spinner.svg" alt="loading"></app-post-content></app-post>`);
+
+		a.onclick = function (event) {
+			showPost(this);
+			return false;
+		};
+		element.prepend(a);
+		return element;
+	}
+	function htmlToElement(html) {
+		var template = document.createElement('template');
+		html = html.trim();
+		template.innerHTML = html;
+		return template.content.firstChild;
+	}
 	function onload() {
 		manageSvg();
 		canvas = document.getElementById("canvas");
 		ctx = canvas.getContext('2d');
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-		
-		for(let e of document.getElementsByTagName('a')) {
+
+		for (let e of document.getElementsByTagName('a')) {
 			e.onclick = function (event) {
 				history.replaceState({}, 'Thornton', e.href);
 				router();
 				return false;
 			};
-			
+
 		}
-	
-		
 		window.requestAnimationFrame(Bubble.draw);
 		container = document.body;
 		header = document.getElementsByTagName('app-header')[0];
 
-		load('/posts.json').then(appendPosts);
+		load('/posts.json').then((r) => {
+			appendPosts(r);
+			router();
+		});
 		registerListeners();
 		router();
 		console.log("loaded");
-
 	}
 	function getOffset(el) {
 		var _x = 0;
@@ -265,9 +296,15 @@ const app = (function () {
 			if (menuitems[path[1]]) {
 				setState('menu');
 				setMenu(path[1]);
+				if (path[1] === 'posts') {
+					if (posts[path[2]]) {
+						console.log(posts[path[2]].element);
+						showPost(posts[path[2]].element);
+					}
+				}
 			}
 		}
-		
+
 	}
 	window.onpopstate = function (e) {
 		//router();

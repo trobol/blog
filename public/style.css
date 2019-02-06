@@ -108,6 +108,7 @@ a.select {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
+    text-decoration: none;
 }
 
 a.select:hover {
@@ -295,6 +296,9 @@ app-post-content {
     position: relative;
     top: -3px;
     z-index: -1;
+}
+app-post-content img {
+    height: 100%;
 }
 app-post.active app-post-content {
     padding: 5%;
