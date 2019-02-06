@@ -64,7 +64,7 @@ const app = (function () {
 				}
 			});
 	}
-
+	
 	let state = 'start',
 		menu = 'none',
 		loadHandlers = {
@@ -77,18 +77,6 @@ const app = (function () {
 		},
 		listeners = {
 			mousedown: {
-				'app-select.blog': function (event) {
-					history.replaceState({}, 'posts', 'posts');
-					router();
-				},
-				'app-select.info': function (event) {
-					history.replaceState({}, 'info', 'info');
-					router();
-				},
-				'app-select.projects': function (event) {
-					history.replaceState({}, 'projects', 'projects');
-					router();
-				},
 				'h1': function (element) {
 					index = (index + 1) % 7;
 					name.style.fontFamily = fonts[index];
@@ -180,27 +168,20 @@ const app = (function () {
 			let color = colors[i.id % colors.length],
 				months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
 				post =
-					`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1">
-	<app-post-header>
-		<app-post-date>
-			<app-post-day>${i.day}</app-post-day>
-			<app-post-month>${months[i.month]}</app-post-month>
-		</app-post-date>
-			
-		<app-post-info>
-			<app-post-title>${i.title}</app-post-title>
-			<p>${i.description}</p>
-		</app-post-info>
-	</app-post-header>
-	<app-post-content>
-	<img src="img/spinner.svg" alt="loading">
-
-	</app-post-content>
-</app-post>`;
+					`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1"><a class="post-header" href="/posts/${i.url}"}><app-post-date><app-post-day>${i.day}</app-post-day><app-post-month>${months[i.month]}</app-post-month></app-post-date><app-post-info><app-post-title>${i.title}</app-post-title><p>${i.description}</p></app-post-info></a><app-post-content><img src="img/spinner.svg" alt="loading"></app-post-content></app-post>`;
 
 			blogPanel.insertAdjacentHTML('beforeend', post);
+
 		}
 		registerListeners();
+		for(let e of blogPanel.getElementsByTagName('a')) {
+			e.onclick = function (event) {
+				history.replaceState({}, 'Thornton', e.href);
+				router();
+				return false;
+			};
+			
+		}
 		let posts = document.getElementsByTagName('app-post');
 		for (let p of posts) {
 			p.offset = getOffset(p).top - header.offsetHeight
@@ -213,7 +194,17 @@ const app = (function () {
 		ctx = canvas.getContext('2d');
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-
+		
+		for(let e of document.getElementsByTagName('a')) {
+			e.onclick = function (event) {
+				history.replaceState({}, 'Thornton', e.href);
+				router();
+				return false;
+			};
+			
+		}
+	
+		
 		window.requestAnimationFrame(Bubble.draw);
 		container = document.body;
 		header = document.getElementsByTagName('app-header')[0];
@@ -264,6 +255,7 @@ const app = (function () {
 
 		}
 	}
+
 	function router() {
 		let path = decodeURI(window.location.pathname);
 		if (path !== '/') {
@@ -275,9 +267,10 @@ const app = (function () {
 				setMenu(path[1]);
 			}
 		}
+		
 	}
 	window.onpopstate = function (e) {
-		router();
+		//router();
 	};
 
 	window.addEventListener('resize', function (evt) {

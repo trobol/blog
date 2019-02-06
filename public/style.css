@@ -99,7 +99,7 @@ app-header {
     z-index: 2;
     background: white;
 } 
-app-select {
+a.select {
     transition: 0.15s;
     box-shadow: 0px 0px lightgrey;
     height: 100%;
@@ -110,11 +110,11 @@ app-select {
     animation: Gradient 5s ease infinite;
 }
 
-app-select:hover {
+a.select:hover {
     box-shadow: 4px 4px lightgrey;
     transform: translate(0, -7px);
 }
-app-select:active {
+a.select:active {
     box-shadow: 0px 0px lightgrey;
     transform: translate(0, 0px);
 }
@@ -144,7 +144,7 @@ app-select-background div, app-settings svg {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
-app-select:hover div {
+a.select:hover div {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
@@ -160,7 +160,7 @@ app-select-background {
     width: calc(100% - 10px);
     transition: border-color 1s, background 1s;
 }
-app-select:hover app-select-background {
+a.select:hover app-select-background {
     margin: 5px;
     border:0;
 }
@@ -218,7 +218,8 @@ app-post {
     transition:padding 1s;
 }
 
-app-post-header {
+a.post-header {
+    color:inherit;
     display: block;
     padding: 0;
     height: 12vw;
@@ -229,7 +230,7 @@ app-post-header {
     transition: 0.3s, border-color 1s, background 1s;
     position: relative;
 }
-app-post-header:before {
+a.post-header:before {
     content: "";
     position: absolute;
     top: 0;
@@ -240,7 +241,7 @@ app-post-header:before {
     box-shadow: 9px 11px 0px 0px #00000026;
     transition: 0.5s;
 }
-.active app-post-header:before {
+.active a.post-header:before {
     box-shadow: 9px 11px 0px 0px #00000026;
 }
 app-post-info {
@@ -299,13 +300,13 @@ app-post.active app-post-content {
     padding: 5%;
     height: 100px;
 }
-app-post.active app-post-header {
+app-post.active a.post-header {
     height: 22vw;
     margin: 0 5%;
     width: 90%;
     font-size: 11vw;
 }
-app-post:active app-post-header {
+app-post:active a.post-header {
     height: 22vw;
     margin: 0 5%;
     width: 90%;
@@ -328,7 +329,7 @@ canvas {
         height: calc(100% - 10px);
         width: calc(100% - 10px);
     }
-    app-select {
+    a.select {
         height: 11vw;
     }
     app-content {
@@ -337,7 +338,7 @@ canvas {
     app-post {
         margin-bottom: 1.5vh;
     }
-    app-post-header {
+    a.post-header {
         border: 3px solid black;
         height: 20vw;
         font-size: 10vw;
@@ -414,7 +415,7 @@ h1 {
     background: rgb(37, 37, 37);
 }
 
-.dark app-post-header {
+.dark a.post-header {
     
     background: rgb(37, 37, 37);
 }
