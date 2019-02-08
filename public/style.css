@@ -335,17 +335,14 @@ app-post-content img {
 app-post.active app-post-content {
     padding: 5%;
     height: 100px;
-}
-app-post.active a.post-header {
-    height: 22vw;
-    margin: 0 5%;
     width: 90%;
-    font-size: 11vw;
+    margin: 0;
+    transition-delay: 0.1s;
 }
-app-post:active a.post-header {
+app-post.active a.post-header, app-post:active a.post-header {
     height: 22vw;
-    margin: 0 5%;
-    width: 90%;
+    margin: 0;
+    width: calc(100% - 6px);
     font-size: 11vw;
 }
 app-post:focus {

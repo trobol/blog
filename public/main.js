@@ -1,7 +1,7 @@
 
 const app = (function () {
-	let canvas, ctx,
-		up = { x: 0, y: -1 },
+	let canvas, ctx, header
+	up = { x: 0, y: -1 },
 		bottom = { x: 0, y: 50 },
 		colors = [
 			'#4e2cac',
@@ -113,9 +113,9 @@ const app = (function () {
 					if (!event.currentTarget.classList.contains('active')) {
 						event.currentTarget.classList.add('active');
 					} else {
-						if(event.target.tagName == "svg" || event.target == event.currentTarget) {
+						if (event.target.tagName == "svg" || event.target == event.currentTarget) {
 							event.currentTarget.classList.remove('active');
-						} 
+						}
 					}
 				},
 
@@ -162,14 +162,18 @@ const app = (function () {
 
 		}
 	}
-	let posts = {};
+	let posts = {}, top;
+
 	function appendPosts(data) {
 		let blogPanel = document.querySelector('app-panel.blog');
+
+		console.log(top);
 		for (let i of data) {
 			let post = buildPost(i);
 			blogPanel.append(post);
 			i.element = post;
-			i.offset = getOffset(post).top - header.offsetHeight
+
+			post.offset = getOffset(post).top - header.offsetHeight - top;
 			posts[i.url] = i;
 		}
 		registerListeners();
@@ -184,7 +188,8 @@ const app = (function () {
 			e.classList.remove('active');
 		}
 		if (!active) {
-			window.scrollTo({
+			console.log(parent.offset);
+			document.body.scrollTo({
 				top: parent.offset,
 				left: 0,
 				behavior: 'smooth'
@@ -240,7 +245,8 @@ const app = (function () {
 		window.requestAnimationFrame(Bubble.draw);
 		container = document.body;
 		header = document.getElementsByTagName('app-header')[0];
-
+		top = window.getComputedStyle(header).top;
+		top = parseFloat(top.slice(0, top.length - 2));
 		load('/posts.json').then((r) => {
 			appendPosts(r);
 			router();
