@@ -113,9 +113,12 @@ const app = (function () {
 					if (!event.currentTarget.classList.contains('active')) {
 						event.currentTarget.classList.add('active');
 					} else {
-						event.currentTarget.classList.remove('active');
+						if(event.target.tagName == "svg" || event.target == event.currentTarget) {
+							event.currentTarget.classList.remove('active');
+						} 
 					}
 				},
+
 				'app-settings-menu-option': function (event) {
 					if (!document.body.classList.contains('dark')) {
 						document.body.classList.add('dark');
