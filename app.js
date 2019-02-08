@@ -36,11 +36,6 @@ app.use(function (req, res, next) {
 					type: 'font/woff2'
 				},
 				{
-					location: '/img/background.gif',
-					path: 'img/background.gif',
-					type: 'image/gif'
-				},
-				{
 					location: '/favicon.ico',
 					path: 'favicon.ico',
 					type: 'image/x-icon'
