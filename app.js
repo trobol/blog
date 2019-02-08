@@ -26,6 +26,16 @@ app.use(function (req, res, next) {
 					type: 'image/svg+xml'
 				},
 				{
+					location: '/img/icons.svg',
+					path: 'img/icons.svg',
+					type: 'image/svg+xml'
+				},
+				{
+					location: '/img/name.svg',
+					path: 'img/name.svg',
+					type: 'image/svg+xml'
+				},
+				{
 					location: '/fonts.css',
 					path: 'fonts.css',
 					type: 'text/css'
