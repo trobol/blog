@@ -1,7 +1,7 @@
 
 const app = (function () {
 	let canvas, ctx, header,
-		bubbles = true,
+		bubblesEnabled = true,
 		up = { x: 0, y: -1 },
 		bottom = { x: 0, y: 50 },
 		colors = [
@@ -325,7 +325,7 @@ const app = (function () {
 		canvas.height = window.innerHeight;
 	});
 
-	return { onload, bubbles }
+	return { onload, bubblesEnabled }
 })();
 window.onload = app.onload;
 
