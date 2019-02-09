@@ -47,7 +47,7 @@
 
 <body>
     </object>
-    <app-header>
+    <app-header role="banner">
         <object id="name" data="/img/name.svg" type="image/svg+xml">
             Thornton
         </object>
@@ -62,7 +62,7 @@
             }
         </script>
 
-        <app-menu>
+        <app-menu role="navigation">
             <a href="/info" class="select info">
                 <app-select-background>
                     <div>Info</div>
@@ -81,7 +81,7 @@
         </app-menu>
     </app-header>
     <canvas id="canvas"></canvas>
-    <app-content>
+    <app-content role="main">
         <app-panel class="info">
 
         </app-panel>
@@ -92,7 +92,7 @@
 
         </app-panel>
     </app-content>
-    <app-settings>
+    <app-settings role="complementary">
         <app-settings-menu>
             <app-settings-menu-option id="dark">
                 <svg class="icon" viewBox="0 0 100 100">
