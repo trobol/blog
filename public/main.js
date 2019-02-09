@@ -173,7 +173,6 @@ const app = (function () {
 			let post = buildPost(data[i]);
 			blogPanel.append(post);
 			data[i].element = post;
-			post.setAttribute('tabindex', i);
 			post.offset = getOffset(post).top - header.offsetHeight - top;
 			posts[data[i].url] = data[i];
 		}
