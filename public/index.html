@@ -31,14 +31,14 @@
             });
         }
 
-        fetch("img/icons.svg")
+        fetch("/img/icons.svg")
             .then(response => response.text())
             .then(text => {
                 var div = document.createElement("div");
 
                 div.innerHTML = text;
                 document.body.insertBefore(div, document.body.childNodes[0]);
-            })
+            });
 
     </script>
     <script src="/main.js"></script>

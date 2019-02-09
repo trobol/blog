@@ -1,7 +1,8 @@
 
 const app = (function () {
-	let canvas, ctx, header
-	up = { x: 0, y: -1 },
+	let canvas, ctx, header,
+		bubbles = true,
+		up = { x: 0, y: -1 },
 		bottom = { x: 0, y: 50 },
 		colors = [
 			'#4e2cac',
@@ -168,13 +169,13 @@ const app = (function () {
 		let blogPanel = document.querySelector('app-panel.blog');
 
 		console.log(top);
-		for (let i of data) {
-			let post = buildPost(i);
+		for (let i in data) {
+			let post = buildPost(data[i]);
 			blogPanel.append(post);
-			i.element = post;
-
+			data[i].element = post;
+			post.setAttribute('tabindex', i);
 			post.offset = getOffset(post).top - header.offsetHeight - top;
-			posts[i.url] = i;
+			posts[data[i].url] = data[i];
 		}
 		registerListeners();
 
@@ -324,7 +325,7 @@ const app = (function () {
 		canvas.height = window.innerHeight;
 	});
 
-	return { onload }
+	return { onload, bubbles }
 })();
 window.onload = app.onload;
 
