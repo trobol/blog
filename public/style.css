@@ -412,11 +412,15 @@ path#name:nth-child(7){animation-delay:-4s}
 path#name:nth-child(8){animation-delay:-3s}
 path#name:nth-child(9){animation-delay:-2s}
 path#name:nth-child(10){animation-delay:-1s}
-#gear {
+#settings {
     stroke:black;
 }
-.dark #gear {
+.dark #settings {
     stroke:white;
+}
+
+body>div{
+    display: none;
 }
 /* MENU STATE */
 
