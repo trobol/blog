@@ -87,9 +87,9 @@ const app = (function () {
 				'app-post-header': function (event) {
 					let parent = this.parentElement,
 						active = parent.classList.contains('active');
-
-					for (let e of parent.parentElement.getElementsByClassName('active')) {
-						e.classList.remove('active');
+					let e = parent.parentElement.getElementsByClassName('active');
+					for (let i in e) {
+						e[i].classList.remove('active');
 					}
 					if (!active) {
 						window.scrollTo({
@@ -233,10 +233,10 @@ const app = (function () {
 		ctx = canvas.getContext('2d');
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-
-		for (let e of document.getElementsByTagName('a')) {
-			e.onclick = function (event) {
-				history.replaceState({}, 'Thornton', e.href);
+		let elements = document.getElementsByTagName('a');
+		for (let i in elements) {
+			elements[i].onclick = function (event) {
+				history.replaceState({}, 'Thornton', elements[i].href);
 				router();
 				return false;
 			};
