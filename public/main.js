@@ -320,8 +320,10 @@ const app = (function () {
 	};
 
 	window.addEventListener('resize', function (evt) {
+		if(canvas) {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		}
 	});
 
 	return { onload, bubblesEnabled }
