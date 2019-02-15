@@ -7,15 +7,14 @@ module.exports = (res, f) => {
 		type:
 	}
 	*/
-	if (res.push){
-		console.log("Push");
-		for(let file of f.files) {
+	if (res.push) {
+		for (let file of f.files) {
 			let content = fs.readFileSync(`${f.root}/${file.path}`);
 			let stream = res.push(file.location, {
 				status: 200, // optional
 				method: 'GET', // optional
 				request: {
-				  accept: '*/*'
+					accept: '*/*'
 				},
 				response: {
 					'Content-Type': file.type
@@ -25,7 +24,6 @@ module.exports = (res, f) => {
 				console.log(err);
 			})
 			stream.end(content);
-			console.log(`Added ${f.root}/${file.path} at ${file.location}`);
 		}
 	}
 };

@@ -64,7 +64,6 @@ app.use(function (req, res, next) {
 		res.end(fs.readFileSync(`${__dirname}/public/index.html`));
 
 	} else {
-		console.log(req.path);
 		next();
 	}
 });
