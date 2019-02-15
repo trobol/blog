@@ -103,6 +103,7 @@ html, body {
     height: 6px;
     border: 6px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
+    border-radius: 10px;
     -webkit-border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -166,6 +167,7 @@ app-select-background div {
     cursor: context-menu;
     -webkit-text-fill-color: white;
     -webkit-text-stroke: 0.3vw black;
+    background-clip: text;
     -webkit-background-clip: text;
 }
 app-select-background div, app-settings svg {
@@ -181,6 +183,7 @@ a.select:hover div {
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     -webkit-background-clip: text;
 }
 
@@ -445,9 +448,7 @@ h1 {
     transition: -webkit-text-stroke 1s, -webkit-text-fill-color 1s;
     -webkit-text-stroke: 0;
 }
-.dark app-select-background div:hover {
- 
-}
+
 .dark canvas {
     background: rgb(37, 37, 37);
 }
