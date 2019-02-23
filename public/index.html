@@ -106,6 +106,23 @@
         </svg>
 
     </app-settings>
+    <template id="post-template">
+        <div class="post" style="color:white" app-post-path="/" tabindex="-1">
+            <a class="post-header" href="/posts/">
+                <app-post-date>
+                    <app-post-day></app-post-day>
+                    <app-post-month></app-post-month>
+                </app-post-date>
+                <app-post-info>
+                    <app-post-title></app-post-title>
+                    <p></p>
+                </app-post-info>
+            </a>
+            <app-post-content>
+                <img src="/img/spinner.svg" alt="loading">
+            </app-post-content>
+        </div>
+    </template>
 </body>
 
 </html>
