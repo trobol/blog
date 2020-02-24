@@ -167,14 +167,17 @@ const app = (function () {
 
 	function appendPosts(data) {
 		let blogPanel = document.querySelector('app-panel.blog');
-
+		let fragment = document.createDocumentFragment();
 		console.log(top);
 		for (let i in data) {
 			let post = buildPost(data[i]);
-			blogPanel.append(post);
+			fragment.append(post);
 			data[i].element = post;
-			post.offset = getOffset(post).top - header.offsetHeight - top;
 			posts[data[i].url] = data[i];
+		}
+		blogPanel.append(fragment);
+		for (let p in posts) {
+			posts[p].element.offset = getOffset(posts[p].element).top - header.offsetHeight - top;
 		}
 		registerListeners();
 
@@ -207,19 +210,34 @@ const app = (function () {
 			});
 		}
 	}
-
+	var postTemplate;
 	function buildPost(i) {
 		let color = colors[i.id % colors.length],
 			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
-			a = htmlToElement(`<a class="post-header" href="/posts/${i.url}"}><app-post-date><app-post-day>${i.day}</app-post-day><app-post-month>${months[i.month]}</app-post-month></app-post-date><app-post-info><app-post-title>${i.title}</app-post-title><p>${i.description}</p></app-post-info></a>`),
-			element = htmlToElement(`<app-post style="color:${color}" app-post-path="${i.url}" tabindex="-1"><app-post-content><img src="/img/spinner.svg" alt="loading"></app-post-content></app-post>`);
+			e = document.importNode(postTemplate.content, true);
+		let post = e.childNodes[1],
+			postHeader = post.childNodes[1],
+			postDate = postHeader.childNodes[1],
+			postDay = postDate.childNodes[1],
+			postMonth = postDate.childNodes[3],
+			postInfo = postHeader.childNodes[3];
+		post.style.color = color;
+		post.setAttribute('app-post-path', i.url);
 
-		a.onclick = function (event) {
+		postHeader.href = "/posts/" + i.url;
+		postDay.innerText = i.day;
+		postMonth.innerText = months[i.month];
+		postInfo.childNodes[1].innerText = i.title;
+		postInfo.childNodes[3].innerText = i.description;
+
+
+
+		postHeader.onclick = function (event) {
 			showPost(this);
 			return false;
 		};
-		element.prepend(a);
-		return element;
+		//element.prepend(a);
+		return post;
 	}
 	function htmlToElement(html) {
 		var template = document.createElement('template');
@@ -247,6 +265,7 @@ const app = (function () {
 		header = document.getElementsByTagName('app-header')[0];
 		top = window.getComputedStyle(header).top;
 		top = parseFloat(top.slice(0, top.length - 2));
+		postTemplate = document.getElementById('post-template');
 		load('/posts.json').then((r) => {
 			appendPosts(r);
 			router();
@@ -265,21 +284,28 @@ const app = (function () {
 		}
 		return { top: _y, left: _x };
 	}
+
 	function manageSvg() {
 		let name = document.getElementById("name");
 		svg = name.contentDocument.getElementById("paths");
 		svg.pauseAnimations();
+		var resize = true;
 		document.body.addEventListener('scroll', (e) => {
-			let value = 1 - (svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
-			if (value > 4) return;
-			if (value < 0) value = 0;
-			if (value > 1) value = 1;
-			window.requestAnimationFrame(function () {
+			if (resize) {
+				resize = false;
+				window.requestAnimationFrame(function () {
+					resize = true;
+					let value = 1 - (svg.clientHeight - ((window.pageYOffset || document.body.scrollTop) - (window.innerHeight * 0.02)) - (document.documentElement.clientTop || 0)) / svg.clientHeight;
+					if (value > 4) return;
+					if (value < 0) value = 0;
+					if (value > 1) value = 1;
+					name.style.width = 100 * value + '%';
+					svg.setCurrentTime(value * 100);
 
-				name.style.width = 100 * value + '%';
-				svg.setCurrentTime(value * 100);
-			});
+				});
+			}
 		});
+
 	}
 	function setState(s) {
 		if (s != state) {
@@ -320,9 +346,9 @@ const app = (function () {
 	};
 
 	window.addEventListener('resize', function (evt) {
-		if(canvas) {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
+		if (canvas) {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 		}
 	});
 
