@@ -115,7 +115,7 @@ html, body {
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
-app-menu {
+#menu {
     margin: auto;
     display: block;
     text-align: center;
@@ -134,7 +134,7 @@ app-header {
 a.select {
     transition: 0.15s;
     box-shadow: 0px 0px lightgrey;
-    height: 100%;
+    height: 11vw;
     width: 32%;
     display: inline-block;
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
@@ -157,10 +157,10 @@ app-select-background div {
     background: linear-gradient(-45deg, #4df1cb,#4cd8f1 , #4186d3, #4e2cac, #e320a8 ,#ff6c9a );
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
-    font-size: 3.5vw;
-    height: 4vw;
+    font-size: 6vw;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
     padding: 5px;
-    width: 100%;
 
     text-align: center;
     font-family: 'Righteous', cursive;
@@ -257,13 +257,14 @@ a.post-header {
     color:inherit;
     display: block;
     padding: 0;
-    height: 12vw;
+    height: 20vw;
+    font-size: 10vw;
     width: 80%;
-    border: 1px solid black;
     background: rgba(255, 255, 255, 0.96);
     margin: 0 10%;
     transition: 0.3s, border-color 1s, background 1s;
     position: relative;
+    border: 3px solid black;
     
 }
 a.post-header:before {
@@ -287,34 +288,36 @@ app-post-info {
 }
 app-post-info p {
     margin:0;
-    font-size: 1.5vw;
+    font-size: 0.3em;
     color: black;
     font-family: monospace;
 }
 app-post-title {
-    font-size: 5.5vw;
+    font-size: 0.8em;
     text-shadow: 0px 0px 1px black;
 }
 app-post-title span{
-    font-size: 2vw;
+    font-size: 0.8em;
     -webkit-text-stroke:0;
 }
 app-post-day {
-    font-size: 8vw;
     text-align: center;
     margin: 0 10px;
     height: 70%;
     display: block;
+    height: 60%;
+    font-size: 1.2em;
 }
 app-post-date {
     float: left;
     height: 100%;
     text-shadow: 0px 0px 1px black;
+    margin: 0 10px;
 }
 app-post-month {
     display: block;
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 0.55em;
 }
 app-post-content {
     border: 1px solid black;
@@ -368,33 +371,12 @@ canvas {
     a.select {
         height: 11vw;
     }
-    app-content {
-        width: 100%;
-    }
-    app-post {
-        margin-bottom: 1.5vh;
-    }
     a.post-header {
         border: 3px solid black;
         height: 20vw;
         font-size: 10vw;
     }
-    app-post-day {
-        height: 60%;
-        font-size: 1.2em;
-    }
-    app-post-month { 
-        font-size: 0.55em;
-    }
-    app-post-title {
-        font-size: 0.8em;
-    }
-    app-post-info p {
-        font-size: 0.3em;
-    }
-    app-post-date {
-        margin: 0 10px;
-    }
+
 }
 @keyframes fade{
     0%{fill:#4df1cb}

@@ -177,7 +177,7 @@ const app = (function () {
 		}
 		blogPanel.append(fragment);
 		for (let p in posts) {
-			posts[p].offset = getOffset(posts[p]).top - header.offsetHeight - top;
+			posts[p].element.offset = getOffset(posts[p].element).top - header.offsetHeight - top;
 		}
 		registerListeners();
 
